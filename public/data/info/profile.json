@@ -1,6 +1,6 @@
 {
   "name": "Marian Adamus",
-  "profilePictureUrl": "images/pictures/avatar.jpeg",
+  "profilePictureUrl": "images/pictures/avatar.png",
 
   "locales": {
     "en": {
@@ -8,9 +8,19 @@
       "role": "Fullstack Developer"
     },
 
-    "cs": {
+    "es": {
       "credits": "Hecho por <strong><a class='light' href='https://github.com/ryanbalieiro'>Ryan Balieiro</a></strong>",
-      "role": "Fullstack Developer"
+      "role": "Designer de UX"
+    },
+
+    "fr": {
+      "credits": "Conçu par <strong><a class='light' href='https://github.com/ryanbalieiro'>Ryan Balieiro</a></strong>",
+      "role": "Designer UX"
+    },
+
+    "zh": {
+      "credits": "设计：<strong><a class='light' href='https://github.com/ryanbalieiro'>Ryan Balieiro</a></strong>",
+      "role": "用户体验设计师"
     }
   },
 
@@ -39,10 +49,34 @@
       "href": "https://www.linkedin.com/in/m-adamus/"
     },
 
+    "facebook": {
+      "id": "facebook",
+      "value": "Marian Adamus",
+      "valueShort": "J. Einstein",
+      "faIcon": "fa-brands fa-facebook",
+      "href": "https://facebook.com"
+    },
+
+    "github": {
+      "id": "github",
+      "value": "@jonas.einstein.official",
+      "valueShort": "@jonas.einstein.official",
+      "faIcon": "fa-brands fa-github",
+      "href": "https://github.com"
+    },
+
+    "instagram": {
+      "id": "instagram",
+      "value": "@jonas.einstein.official",
+      "valueShort": "@jonas.einstein.official",
+      "faIcon": "fa-brands fa-instagram",
+      "href": "https://instagram.com"
+    },
+
     "phone": {
       "id": "phone",
-      "value": "+420 123456789",
-      "valueShort": "+420 123456789",
+      "value": "+1 (123) 456-7890",
+      "valueShort": "(123) 456-7890",
       "faIcon": "fa-solid fa-phone",
       "href": "tel:1234567890"
     }
