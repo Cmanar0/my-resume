@@ -1,9 +1,75 @@
 <script setup lang="ts">
-// We'll add the animation library later
+import { onMounted, ref } from 'vue'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const sectionRef = ref<HTMLElement | null>(null)
+const imageRef = ref<HTMLElement | null>(null)
+const titleRef = ref<HTMLElement | null>(null)
+const statsRef = ref<HTMLElement | null>(null)
+
+onMounted(() => {
+  if (sectionRef.value) {
+    // Fade in the section
+    gsap.from(sectionRef.value, {
+      opacity: 0,
+      duration: 1,
+      ease: 'power2.out'
+    })
+
+    // Animate the image
+    if (imageRef.value) {
+      gsap.from(imageRef.value, {
+        scale: 0.8,
+        opacity: 0,
+        duration: 1,
+        ease: 'back.out(1.7)',
+        scrollTrigger: {
+          trigger: imageRef.value,
+          start: 'top bottom-=100',
+          toggleActions: 'play none none reverse'
+        }
+      })
+    }
+
+    // Animate the title
+    if (titleRef.value) {
+      gsap.from(titleRef.value, {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: titleRef.value,
+          start: 'top bottom-=100',
+          toggleActions: 'play none none reverse'
+        }
+      })
+    }
+
+    // Animate the stats
+    if (statsRef.value) {
+      gsap.from(statsRef.value.children, {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: statsRef.value,
+          start: 'top bottom-=100',
+          toggleActions: 'play none none reverse'
+        }
+      })
+    }
+  }
+})
 </script>
 
 <template>
-  <section class="py-20 w-screen">
+  <section ref="sectionRef" class="py-20 w-screen">
     <div class="w-screen">
       <div class="container mx-auto px-4">
         <div class="max-w-6xl mx-auto">
@@ -13,9 +79,9 @@
           </h2>
           
           <!-- Top Section -->
-          <div class="flex flex-col md:flex-row items-center gap-24 mb-32 pl-12 pr-12">
+          <div class="flex flex-col md:flex-row items-center gap-24 mb-24 pl-12 pr-12">
             <!-- Profile Image -->
-            <div class="w-48 md:w-48 flex-shrink-0">
+            <div ref="imageRef" class="w-48 md:w-48 flex-shrink-0">
               <div class="relative w-full aspect-square group">
                 <!-- Glow effect -->
                 <div class="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-20 blur-xl group-hover:opacity-30 transition-opacity duration-300"></div>
@@ -34,7 +100,7 @@
             </div>
             
             <!-- Content -->
-            <div class="flex-1 space-y-8">
+            <div ref="titleRef" class="flex-1 space-y-8">
               <!-- Title and Description -->
               <div class="space-y-4">
                 <h3 class="text-3xl font-semibold text-left">
@@ -56,10 +122,10 @@
           </div>
 
           <!-- Stats Row -->
-          <div class="flex justify-center mt-16 mb-32">
+          <div ref="statsRef" class="flex justify-center mb-32">
             <div class="grid grid-cols-2 gap-12 md:gap-32 pl-12 pr-12">
               <div class="text-center">
-                <h4 class="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">3+</h4>
+                <h4 class="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">4+</h4>
                 <p class="text-gray-600 dark:text-gray-300 font-medium">Years Experience</p>
               </div>
               <div class="text-center">
@@ -103,31 +169,189 @@
           <!-- Skills -->
           <div class="text-center space-y-6">
             <h4 class="text-2xl font-semibold text-gray-900 dark:text-white">Technical Expertise</h4>
-            <div class="flex flex-wrap justify-center gap-3">
-              <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
-                Vue.js
-              </span>
-              <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
-                TypeScript
-              </span>
-              <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
-                Node.js
-              </span>
-              <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
-                TailwindCSS
-              </span>
-              <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
-                REST APIs
-              </span>
-              <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
-                Git
-              </span>
-              <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
-                React Native
-              </span>
-              <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
-                MongoDB
-              </span>
+            
+            <!-- Core Technologies -->
+            <div class="space-y-4">
+              <h5 class="text-lg font-medium text-gray-700 dark:text-gray-300">Core Technologies</h5>
+              <div class="flex flex-wrap justify-center gap-3">
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  HTML
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  CSS
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  JavaScript
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  TypeScript
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Python
+                </span>
+              </div>
+            </div>
+
+            <!-- Frontend Frameworks -->
+            <div class="space-y-4">
+              <h5 class="text-lg font-medium text-gray-700 dark:text-gray-300">Frontend Frameworks</h5>
+              <div class="flex flex-wrap justify-center gap-3">
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Vue.js
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Nuxt.js
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  React
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Next.js
+                </span>
+              </div>
+            </div>
+
+            <!-- State Management -->
+            <div class="space-y-4">
+              <h5 class="text-lg font-medium text-gray-700 dark:text-gray-300">State Management</h5>
+              <div class="flex flex-wrap justify-center gap-3">
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Pinia
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Vuex
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Redux
+                </span>
+              </div>
+            </div>
+
+            <!-- Deployment & Hosting -->
+            <div class="space-y-4">
+              <h5 class="text-lg font-medium text-gray-700 dark:text-gray-300">Deployment & Hosting</h5>
+              <div class="flex flex-wrap justify-center gap-3">
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Vercel
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Netlify
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  DigitalOcean
+                </span>
+              </div>
+            </div>
+
+            <!-- Mobile Development -->
+            <div class="space-y-4">
+              <h5 class="text-lg font-medium text-gray-700 dark:text-gray-300">Mobile Development</h5>
+              <div class="flex flex-wrap justify-center gap-3">
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Quasar with Capacitor
+                </span>
+              </div>
+            </div>
+
+            <!-- UI Frameworks -->
+            <div class="space-y-4">
+              <h5 class="text-lg font-medium text-gray-700 dark:text-gray-300">UI Frameworks</h5>
+              <div class="flex flex-wrap justify-center gap-3">
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Tailwind
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  DevExtreme
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Vuetify
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Bootstrap
+                </span>
+              </div>
+            </div>
+
+            <!-- Backend & DevOps -->
+            <div class="space-y-4">
+              <h5 class="text-lg font-medium text-gray-700 dark:text-gray-300">Backend & DevOps</h5>
+              <div class="flex flex-wrap justify-center gap-3">
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Django
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Docker
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Git
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Vite
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Vitest
+                </span>
+              </div>
+            </div>
+
+            <!-- Tools & Services -->
+            <div class="space-y-4">
+              <h5 class="text-lg font-medium text-gray-700 dark:text-gray-300">Tools & Services</h5>
+              <div class="flex flex-wrap justify-center gap-3">
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  DatoCMS
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Mailchimp
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Figma
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Sentry
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Brevo
+                </span>
+              </div>
+            </div>
+
+            <!-- Project Management -->
+            <div class="space-y-4">
+              <h5 class="text-lg font-medium text-gray-700 dark:text-gray-300">Project Management</h5>
+              <div class="flex flex-wrap justify-center gap-3">
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  YouTrack
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Jira
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Notion
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Toggl
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Slack
+                </span>
+              </div>
+            </div>
+
+            <!-- Operating Systems -->
+            <div class="space-y-4">
+              <h5 class="text-lg font-medium text-gray-700 dark:text-gray-300">Operating Systems</h5>
+              <div class="flex flex-wrap justify-center gap-3">
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Windows
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  macOS
+                </span>
+                <span class="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-medium hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                  Linux
+                </span>
+              </div>
             </div>
           </div>
         </div>
