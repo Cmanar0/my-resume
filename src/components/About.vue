@@ -153,20 +153,24 @@ onMounted(() => {
 
               <!-- Right Card -->
               <div class="flex-1 p-6 bg-black rounded-xl shadow-lg border border-gray-300 dark:border-gray-700 text-white">
-                <div class="grid grid-cols-2 gap-8 text-center">
-                  <div>
+                <div class="flex flex-wrap justify-center items-center gap-8">
+                  <div class="text-center">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" />
                     <h4 class="text-xl font-bold mb-2">Vue.js</h4>
                     <p class="text-gray-400 text-sm">Frontend Framework</p>
                   </div>
-                  <div>
+                  <div class="text-center">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxtjs/nuxtjs-original.svg" />
                     <h4 class="text-xl font-bold mb-2">Nuxt.js</h4>
                     <p class="text-gray-400 text-sm">SSR Framework</p>
                   </div>
-                  <div>
+                  <div class="text-center">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
                     <h4 class="text-xl font-bold mb-2">React</h4>
                     <p class="text-gray-400 text-sm">Library</p>
                   </div>
-                  <div>
+                  <div class="text-center">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" />
                     <h4 class="text-xl font-bold mb-2">TypeScript</h4>
                     <p class="text-gray-400 text-sm">Typed JS</p>
                   </div>
@@ -187,13 +191,15 @@ onMounted(() => {
                 </div>
               </div>
               <div class="md:w-1 md:h-auto w-full h-1 bg-gray-300 dark:bg-gray-700"></div>
-              <div class="flex-1 p-6 bg-black rounded-xl shadow-lg border border-gray-300 dark:border-gray-700 text-white text-center">
-                <div class="grid grid-cols-2 gap-8">
-                  <div>
+              <div class="flex-1 p-6 bg-black rounded-xl shadow-lg border border-gray-300 dark:border-gray-700 text-white">
+                <div class="flex flex-wrap justify-center items-center gap-8">
+                  <div class="text-center">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" />
                     <h4 class="text-xl font-bold mb-2">Django</h4>
                     <p class="text-gray-400 text-sm">Web Framework</p>
                   </div>
-                  <div>
+                  <div class="text-center">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" />
                     <h4 class="text-xl font-bold mb-2">Docker</h4>
                     <p class="text-gray-400 text-sm">Containerization</p>
                   </div>
@@ -214,13 +220,15 @@ onMounted(() => {
                 </div>
               </div>
               <div class="md:w-1 md:h-auto w-full h-1 bg-gray-300 dark:bg-gray-700"></div>
-              <div class="flex-1 p-6 bg-black rounded-xl shadow-lg border border-gray-300 dark:border-gray-700 text-white text-center">
-                <div class="grid grid-cols-2 gap-8">
-                  <div>
+              <div class="flex-1 p-6 bg-black rounded-xl shadow-lg border border-gray-300 dark:border-gray-700 text-white">
+                <div class="flex flex-wrap justify-center items-center gap-8">
+                  <div class="text-center">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/quasar/quasar-original.svg" />
                     <h4 class="text-xl font-bold mb-2">Quasar</h4>
                     <p class="text-gray-400 text-sm">Vue Framework</p>
                   </div>
-                  <div>
+                  <div class="text-center">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/capacitor/capacitor-original.svg" />
                     <h4 class="text-xl font-bold mb-2">Capacitor</h4>
                     <p class="text-gray-400 text-sm">Native Bridge</p>
                   </div>
