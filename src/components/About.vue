@@ -109,10 +109,12 @@ onMounted(() => {
                   </div>
                   <h4 class="text-xl font-semibold text-gray-900 dark:text-white">What can I do for you?</h4>
                 </div>
-                <ul class="list-disc text-left list-inside space-y-2 text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
-                  <li>Helping you bring your project to life—whether it’s just an idea or already fully designed.</li>
-                  <li>Ready to collaborate and integrate seamlessly into your development team.</li>
-                </ul>
+                <div class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
+                  <span class="text-indigo-600 dark:text-indigo-400">•</span>
+                  <span class="text-left">Helping you bring your project to life—whether it's just an idea or already fully designed.</span>
+                  <span class="text-indigo-600 dark:text-indigo-400">•</span>
+                  <span class="text-left">Ready to collaborate and integrate seamlessly into your development team.</span>
+                </div>
               </div>
               <!-- Connector Line -->
               <div class="md:w-1 md:h-auto w-full h-1 bg-gray-300 dark:bg-gray-700"></div>
