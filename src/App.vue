@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import Navbar from './components/Navbar.vue'
 import Intro from './components/Intro.vue'
 import About from './components/About.vue'
@@ -17,6 +17,27 @@ const scrollToSection = (sectionId: string) => {
     element.scrollIntoView({ behavior: 'smooth' })
   }
 }
+
+const handleScroll = () => {
+  const sections = ['intro', 'about', 'experience', 'projects', 'skills', 'contact']
+  const scrollPosition = window.scrollY + 100
+
+  for (const section of sections) {
+    const element = document.getElementById(section)
+    if (element) {
+      const { offsetTop, offsetHeight } = element
+      if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+        activeSection.value = section
+        break
+      }
+    }
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+  handleScroll() // Initial check
+})
 </script>
 
 <template>
@@ -32,7 +53,7 @@ const scrollToSection = (sectionId: string) => {
       <SectionDivider />
       <Projects id="projects" />
       <SectionDivider />
-      <Skills />
+      <Skills id="skills" />
       <SectionDivider />
       <Contact id="contact" />
     </main>
