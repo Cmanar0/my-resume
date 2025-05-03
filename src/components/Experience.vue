@@ -25,34 +25,36 @@ const experiences = [
 </script>
 
 <template>
-  <section class="py-20 bg-gray-50 dark:bg-gray-800">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">Experience</h2>
-      
-      <div class="relative">
-        <!-- Timeline line -->
-        <div class="absolute left-4 md:left-8 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700"></div>
+  <section class="py-20 bg-gray-50 dark:bg-gray-800 w-screen">
+    <div class="w-screen">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">Experience</h2>
         
-        <div class="space-y-12">
-          <div
-            v-for="(exp, index) in experiences"
-            :key="index"
-            class="relative pl-8 md:pl-12"
-          >
-            <!-- Timeline dot -->
-            <div class="absolute left-4 md:left-8 top-0 w-4 h-4 rounded-full bg-indigo-600"></div>
-            
-            <!-- Content -->
-            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg">
-              <div class="flex items-center gap-4 mb-4">
-                <span class="text-2xl">{{ exp.icon }}</span>
-                <div>
-                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{{ exp.role }}</h3>
-                  <p class="text-indigo-600 dark:text-indigo-400">{{ exp.company }}</p>
+        <div class="relative">
+          <!-- Timeline line -->
+          <div class="absolute left-4 md:left-8 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700"></div>
+          
+          <div class="space-y-12">
+            <div
+              v-for="(exp, index) in experiences"
+              :key="index"
+              class="relative pl-8 md:pl-12"
+            >
+              <!-- Timeline dot -->
+              <div class="absolute left-4 md:left-8 top-0 w-4 h-4 rounded-full bg-indigo-600"></div>
+              
+              <!-- Content -->
+              <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg">
+                <div class="flex items-center gap-4 mb-4">
+                  <span class="text-2xl">{{ exp.icon }}</span>
+                  <div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{{ exp.role }}</h3>
+                    <p class="text-indigo-600 dark:text-indigo-400">{{ exp.company }}</p>
+                  </div>
+                  <span class="ml-auto text-sm text-gray-500 dark:text-gray-400">{{ exp.period }}</span>
                 </div>
-                <span class="ml-auto text-sm text-gray-500 dark:text-gray-400">{{ exp.period }}</span>
+                <p class="text-gray-600 dark:text-gray-300">{{ exp.description }}</p>
               </div>
-              <p class="text-gray-600 dark:text-gray-300">{{ exp.description }}</p>
             </div>
           </div>
         </div>

@@ -21,7 +21,7 @@ const scrollToSection = (sectionId: string) => {
   <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
     <Navbar :active-section="activeSection" />
     
-    <main class="container mx-auto px-4">
+    <main class="w-full">
       <Intro id="intro" @scroll-to-section="scrollToSection" />
       <About id="about" />
       <Experience id="experience" />
