@@ -5,6 +5,7 @@ import Intro from './components/Intro.vue'
 import About from './components/About.vue'
 import Experience from './components/Experience.vue'
 import Projects from './components/Projects.vue'
+import Skills from './components/Skills.vue'
 import Contact from './components/Contact.vue'
 import SectionDivider from './components/SectionDivider.vue'
 
@@ -30,6 +31,8 @@ const scrollToSection = (sectionId: string) => {
       <Experience id="experience" />
       <SectionDivider />
       <Projects id="projects" />
+      <SectionDivider />
+      <Skills />
       <SectionDivider />
       <Contact id="contact" />
     </main>
