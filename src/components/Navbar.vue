@@ -24,7 +24,7 @@ const scrollToSection = (sectionId: string) => {
     <div class="max-w-7xl mx-auto pl-0 pr-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <div class="flex-shrink-0">
-          <span class="text-xl font-bold text-gray-900 dark:text-white">Your Name</span>
+          <span class="text-xl font-bold text-gray-900 dark:text-white">Marian Adamus</span>
         </div>
         <div class="hidden md:block">
           <div class="flex space-x-8">

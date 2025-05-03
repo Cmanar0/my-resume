@@ -25,8 +25,19 @@ onMounted(() => {
     
     <!-- Content -->
     <div class="relative z-10 text-center px-4">
+      <!-- Avatar -->
+      <div class="mb-8 flex justify-center">
+        <div class="relative w-32 h-32 md:w-40 md:h-40 group">
+          <div class="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-0 blur-xl group-hover:opacity-30 transition-opacity"></div>
+          <img
+            src="/Avatar-nobg.png"
+            alt="Marian Adamus"
+            class="w-full h-full object-cover rounded-full border-4 border-white dark:border-gray-800 shadow-lg group-hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+      </div>
       <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4">
-        Your Name
+        Marian Adamus
       </h1>
       <h2 class="text-2xl md:text-3xl text-gray-600 dark:text-gray-300 mb-8">
         <span ref="typedElement"></span>
