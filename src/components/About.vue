@@ -134,121 +134,121 @@ onMounted(() => {
               </div>
             </div>
 
-            <!-- Card Row 1: Experience -->
-            <div class="flex flex-col md:flex-row items-center md:items-stretch gap-4">
-              <!-- Left Card -->
-              <div class="flex-1 p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                <div class="flex items-center gap-4 mb-4">
-                  <div class="text-indigo-600 dark:text-indigo-400">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <h4 class="text-xl font-semibold text-gray-900 dark:text-white">Frontend Development</h4>
-                </div>
-              </div>
-
-              <!-- Connector Line -->
-              <div class="md:w-1 md:h-auto w-full h-1 bg-gray-300 dark:bg-gray-700"></div>
-
-              <!-- Right Card -->
-              <div class="flex-1 p-6 bg-black rounded-xl shadow-lg border border-gray-300 dark:border-gray-700 text-white">
-                <div class="flex flex-wrap justify-center items-center gap-8">
-                  <div class="text-center flex flex-col items-center justify-center">
-                    <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" />
-                    <h4 class="text-xl font-bold mb-2">Vue.js</h4>
-                    <p class="text-gray-400 text-sm">Frontend Framework</p>
-                  </div>
-                  <div class="text-center flex flex-col items-center justify-center">
-                    <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxtjs/nuxtjs-original.svg" />
-                    <h4 class="text-xl font-bold mb-2">Nuxt.js</h4>
-                    <p class="text-gray-400 text-sm">SSR Framework</p>
-                  </div>
-                  <div class="text-center flex flex-col items-center justify-center">
-                    <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
-                    <h4 class="text-xl font-bold mb-2">React</h4>
-                    <p class="text-gray-400 text-sm">Library</p>
-                  </div>
-                  <div class="text-center flex flex-col items-center justify-center">
-                    <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" />
-                    <h4 class="text-xl font-bold mb-2">TypeScript</h4>
-                    <p class="text-gray-400 text-sm">Typed JS</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card Row 2: Backend -->
-            <div class="flex flex-col md:flex-row items-center md:items-stretch gap-4">
-              <div class="flex-1 p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                <div class="flex items-center gap-4">
-                  <div class="text-indigo-600 dark:text-indigo-400">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-                    </svg>
-                  </div>
-                  <h4 class="text-xl font-semibold text-gray-900 dark:text-white">Backend Development</h4>
-                </div>
-              </div>
-              <div class="md:w-1 md:h-auto w-full h-1 bg-gray-300 dark:bg-gray-700"></div>
-              <div class="flex-1 p-6 bg-black rounded-xl shadow-lg border border-gray-300 dark:border-gray-700 text-white">
-                <div class="flex flex-wrap justify-center items-center gap-8">
-                  <div class="text-center flex flex-col items-center justify-center">
-                    <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" />
-                    <h4 class="text-xl font-bold mb-2">Django</h4>
-                    <p class="text-gray-400 text-sm">Web Framework</p>
-                  </div>
-                  <div class="text-center flex flex-col items-center justify-center">
-                    <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" />
-                    <h4 class="text-xl font-bold mb-2">Docker</h4>
-                    <p class="text-gray-400 text-sm">Containerization</p>
-                  </div>
-                  <div class="text-center flex flex-col items-center justify-center">
-                    <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" />
-                    <h4 class="text-xl font-bold mb-2">PostgreSQL</h4>
-                    <p class="text-gray-400 text-sm">Database</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card Row 3: Mobile -->
-            <div class="flex flex-col md:flex-row items-center md:items-stretch gap-4">
-              <div class="flex-1 p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                <div class="flex items-center gap-4">
-                  <div class="text-indigo-600 dark:text-indigo-400">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <h4 class="text-xl font-semibold text-gray-900 dark:text-white">Mobile Development</h4>
-                </div>
-              </div>
-              <div class="md:w-1 md:h-auto w-full h-1 bg-gray-300 dark:bg-gray-700"></div>
-              <div class="flex-1 p-6 bg-black rounded-xl shadow-lg border border-gray-300 dark:border-gray-700 text-white">
-                <div class="flex flex-wrap justify-center items-center gap-8">
-                  <div class="text-center flex flex-col items-center justify-center">
-                    <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" />
-                    <h4 class="text-xl font-bold mb-2">Vue.js</h4>
-                    <p class="text-gray-400 text-sm">Frontend Framework</p>
-                  </div>
-                    <div class="text-center flex flex-col items-center justify-center">
-                    <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/quasar/quasar-original.svg" />
-                    <h4 class="text-xl font-bold mb-2">Quasar</h4>
-                    <p class="text-gray-400 text-sm">Vue Framework</p>
-                  </div>
-                  <div class="text-center flex flex-col items-center justify-center">
-                    <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/capacitor/capacitor-original.svg" />
-                    <h4 class="text-xl font-bold mb-2">Capacitor</h4>
-                    <p class="text-gray-400 text-sm">Native Bridge</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <!-- Divider with text -->
+          <div class="flex items-center justify-center my-16">
+            <div class="flex-1 h-px bg-gray-300 dark:bg-gray-700"></div>
+            <span class="mx-4 text-lg font-semibold text-gray-600 dark:text-gray-300">My favorite Tech Stack</span>
+            <div class="flex-1 h-px bg-gray-300 dark:bg-gray-700"></div>
           </div>
+            
+         <!-- Merged Cards Row -->
+<div class="flex flex-col md:flex-row gap-4 mb-16">
+
+  <!-- Frontend Development Card -->
+  <div class="flex-1 p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 flex flex-col items-center">
+    <div class="flex items-center gap-4 mb-4">
+      <div class="text-indigo-600 dark:text-indigo-400">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      </div>
+      <h4 class="text-xl font-semibold text-gray-900 dark:text-white">Frontend Development</h4>
+    </div>
+    <div class="flex flex-wrap justify-center items-center gap-6">
+      <div class="flex flex-col items-center">
+        <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+          <img class="w-6 h-6" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" />
+        </div>
+        <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Vue.js</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+          <img class="w-6 h-6" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxtjs/nuxtjs-original.svg" />
+        </div>
+        <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Nuxt.js</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+          <img class="w-6 h-6" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
+        </div>
+        <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">React</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Backend Development Card -->
+  <div class="flex-1 p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 flex flex-col items-center">
+    <div class="flex items-center gap-4 mb-4">
+      <div class="text-indigo-600 dark:text-indigo-400">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+        </svg>
+      </div>
+      <h4 class="text-xl font-semibold text-gray-900 dark:text-white">Backend Development</h4>
+    </div>
+    <div class="flex flex-wrap justify-center items-center gap-6">
+      <div class="flex flex-col items-center">
+        <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+          <img class="w-6 h-6" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" />
+        </div>
+        <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Django</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+          <img class="w-6 h-6" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" />
+        </div>
+        <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Docker</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+          <img class="w-6 h-6" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" />
+        </div>
+        <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">PostgreSQL</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Development Card -->
+  <div class="flex-1 p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 flex flex-col items-center">
+    <div class="flex items-center gap-4 mb-4">
+      <div class="text-indigo-600 dark:text-indigo-400">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        </svg>
+      </div>
+      <h4 class="text-xl font-semibold text-gray-900 dark:text-white">Mobile Development</h4>
+    </div>
+    <div class="flex flex-wrap justify-center items-center gap-6">
+      <div class="flex flex-col items-center">
+        <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+          <img class="w-6 h-6" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" />
+        </div>
+        <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Vue.js</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+          <img class="w-6 h-6" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/quasar/quasar-original.svg" />
+        </div>
+        <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Quasar</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+          <img class="w-6 h-6" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/capacitor/capacitor-original.svg" />
+        </div>
+        <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Capacitor</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
 
         </div>
       </div>
+    </div>
     </div>
   </section>
 </template>
