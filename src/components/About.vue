@@ -109,10 +109,10 @@ onMounted(() => {
                   </div>
                   <h4 class="text-xl font-semibold text-gray-900 dark:text-white">What can I do for you?</h4>
                 </div>
-                <div class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
-                  <span class="text-indigo-600 dark:text-indigo-400">•</span>
+                <div class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-gray-600 dark:text-gray-300 leading-relaxed text-lg items-start">
+                  <span class="text-indigo-600 dark:text-indigo-400 mt-1">•</span>
                   <span class="text-left">Helping you bring your project to life—whether it's just an idea or already fully designed.</span>
-                  <span class="text-indigo-600 dark:text-indigo-400">•</span>
+                  <span class="text-indigo-600 dark:text-indigo-400 mt-1">•</span>
                   <span class="text-left">Ready to collaborate and integrate seamlessly into your development team.</span>
                 </div>
               </div>
@@ -154,23 +154,23 @@ onMounted(() => {
               <!-- Right Card -->
               <div class="flex-1 p-6 bg-black rounded-xl shadow-lg border border-gray-300 dark:border-gray-700 text-white">
                 <div class="flex flex-wrap justify-center items-center gap-8">
-                  <div class="text-center">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" />
+                  <div class="text-center flex flex-col items-center justify-center">
+                    <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" />
                     <h4 class="text-xl font-bold mb-2">Vue.js</h4>
                     <p class="text-gray-400 text-sm">Frontend Framework</p>
                   </div>
-                  <div class="text-center">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxtjs/nuxtjs-original.svg" />
+                  <div class="text-center flex flex-col items-center justify-center">
+                    <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxtjs/nuxtjs-original.svg" />
                     <h4 class="text-xl font-bold mb-2">Nuxt.js</h4>
                     <p class="text-gray-400 text-sm">SSR Framework</p>
                   </div>
-                  <div class="text-center">
-                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
+                  <div class="text-center flex flex-col items-center justify-center">
+                    <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
                     <h4 class="text-xl font-bold mb-2">React</h4>
                     <p class="text-gray-400 text-sm">Library</p>
                   </div>
-                  <div class="text-center">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" />
+                  <div class="text-center flex flex-col items-center justify-center">
+                    <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" />
                     <h4 class="text-xl font-bold mb-2">TypeScript</h4>
                     <p class="text-gray-400 text-sm">Typed JS</p>
                   </div>
@@ -193,15 +193,20 @@ onMounted(() => {
               <div class="md:w-1 md:h-auto w-full h-1 bg-gray-300 dark:bg-gray-700"></div>
               <div class="flex-1 p-6 bg-black rounded-xl shadow-lg border border-gray-300 dark:border-gray-700 text-white">
                 <div class="flex flex-wrap justify-center items-center gap-8">
-                  <div class="text-center">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" />
+                  <div class="text-center flex flex-col items-center justify-center">
+                    <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" />
                     <h4 class="text-xl font-bold mb-2">Django</h4>
                     <p class="text-gray-400 text-sm">Web Framework</p>
                   </div>
-                  <div class="text-center">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" />
+                  <div class="text-center flex flex-col items-center justify-center">
+                    <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" />
                     <h4 class="text-xl font-bold mb-2">Docker</h4>
                     <p class="text-gray-400 text-sm">Containerization</p>
+                  </div>
+                  <div class="text-center flex flex-col items-center justify-center">
+                    <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" />
+                    <h4 class="text-xl font-bold mb-2">PostgreSQL</h4>
+                    <p class="text-gray-400 text-sm">Database</p>
                   </div>
                 </div>
               </div>
@@ -222,13 +227,18 @@ onMounted(() => {
               <div class="md:w-1 md:h-auto w-full h-1 bg-gray-300 dark:bg-gray-700"></div>
               <div class="flex-1 p-6 bg-black rounded-xl shadow-lg border border-gray-300 dark:border-gray-700 text-white">
                 <div class="flex flex-wrap justify-center items-center gap-8">
-                  <div class="text-center">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/quasar/quasar-original.svg" />
+                  <div class="text-center flex flex-col items-center justify-center">
+                    <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" />
+                    <h4 class="text-xl font-bold mb-2">Vue.js</h4>
+                    <p class="text-gray-400 text-sm">Frontend Framework</p>
+                  </div>
+                    <div class="text-center flex flex-col items-center justify-center">
+                    <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/quasar/quasar-original.svg" />
                     <h4 class="text-xl font-bold mb-2">Quasar</h4>
                     <p class="text-gray-400 text-sm">Vue Framework</p>
                   </div>
-                  <div class="text-center">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/capacitor/capacitor-original.svg" />
+                  <div class="text-center flex flex-col items-center justify-center">
+                    <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/capacitor/capacitor-original.svg" />
                     <h4 class="text-xl font-bold mb-2">Capacitor</h4>
                     <p class="text-gray-400 text-sm">Native Bridge</p>
                   </div>
