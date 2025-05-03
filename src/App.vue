@@ -8,6 +8,13 @@ import Projects from './components/Projects.vue'
 import Contact from './components/Contact.vue'
 
 const activeSection = ref('intro')
+
+const scrollToSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId)
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' })
+  }
+}
 </script>
 
 <template>
@@ -15,7 +22,7 @@ const activeSection = ref('intro')
     <Navbar :active-section="activeSection" />
     
     <main class="container mx-auto px-4">
-      <Intro id="intro" />
+      <Intro id="intro" @scroll-to-section="scrollToSection" />
       <About id="about" />
       <Experience id="experience" />
       <Projects id="projects" />

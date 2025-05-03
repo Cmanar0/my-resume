@@ -27,7 +27,7 @@ onMounted(() => {
     <div class="relative z-10 text-center px-4">
       <!-- Avatar -->
       <div class="mb-8 flex justify-center">
-        <div class="relative w-32 h-32 md:w-40 md:h-40 group">
+        <div class="relative w-32 h-32 md:w-40 md:h-40 group cursor-pointer" @click="$emit('scrollToSection', 'about')">
           <div class="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-0 blur-xl group-hover:opacity-30 transition-opacity"></div>
           <img
             src="/Avatar-nobg.png"
