@@ -1,30 +1,31 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { ref } from 'vue'
+import Navbar from './components/Navbar.vue'
+import Intro from './components/Intro.vue'
+import About from './components/About.vue'
+import Experience from './components/Experience.vue'
+import Projects from './components/Projects.vue'
+import Contact from './components/Contact.vue'
+
+const activeSection = ref('intro')
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <Navbar :active-section="activeSection" />
+    
+    <main class="container mx-auto px-4">
+      <Intro id="intro" />
+      <About id="about" />
+      <Experience id="experience" />
+      <Projects id="projects" />
+      <Contact id="contact" />
+    </main>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+<style>
+html {
+  scroll-behavior: smooth;
 }
 </style>
