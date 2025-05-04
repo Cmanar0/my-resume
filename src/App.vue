@@ -68,6 +68,8 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: black;
   color: white;
+  overflow-x: hidden;
+  
 }
 
 html {
