@@ -1,32 +1,5 @@
 <script setup lang="ts">
-const projects = [
-  {
-    title: 'STAFIO',
-    description:
-      'News Agency Website with admin dashboard. Made with React.js, Java Spring and PostgreSQL.',
-    image: '/table.png',
-    tags: [
-      {
-        name: 'JavaScript',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
-      },
-      {
-        name: 'React',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-      },
-      {
-        name: 'Spring',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg',
-      },
-      {
-        name: 'PostgreSQL',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
-      },
-    ],
-    github: 'https://github.com',
-    demo: 'https://demo.com',
-  },
-]
+// No data needed here anymore.
 </script>
 
 <template>
@@ -38,9 +11,8 @@ const projects = [
       ></div>
     </h2>
 
+    <!-- Single hardcoded card -->
     <div
-      v-for="(project, index) in projects"
-      :key="index"
       class="flex flex-col lg:flex-row items-center card-size justify-between bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 mb-12 p-6 lg:p-10 hover:shadow-xl transition-shadow duration-300 relative overflow-hidden"
     >
       <div class="absolute inset-0 bg-gradient-to-t from-indigo-900/60 to-transparent z-10 pointer-events-none"></div>
@@ -48,33 +20,63 @@ const projects = [
       <!-- Left side -->
       <div class="w-full lg:w-1/3 space-y-6 text-left relative z-20">
         <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white">
-          {{ project.title }}
+          STAFIO
         </h3>
 
         <div class="flex items-center gap-4">
           <div
-            v-for="(tag, tagIndex) in project.tags"
-            :key="tagIndex"
             class="flex items-center justify-center w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full hover:scale-110 transition-transform duration-300"
           >
-            <img :src="tag.icon" :alt="tag.name" class="w-6 h-6" />
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+              alt="JavaScript"
+              class="w-6 h-6"
+            />
+          </div>
+          <div
+            class="flex items-center justify-center w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full hover:scale-110 transition-transform duration-300"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+              alt="React"
+              class="w-6 h-6"
+            />
+          </div>
+          <div
+            class="flex items-center justify-center w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full hover:scale-110 transition-transform duration-300"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"
+              alt="Spring"
+              class="w-6 h-6"
+            />
+          </div>
+          <div
+            class="flex items-center justify-center w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full hover:scale-110 transition-transform duration-300"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+              alt="PostgreSQL"
+              class="w-6 h-6"
+            />
           </div>
         </div>
 
         <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-          {{ project.description }}
+          News Agency Website with admin dashboard. Made with React.js, Java
+          Spring and PostgreSQL.
         </p>
 
         <div class="flex gap-4 mt-4">
           <a
-            :href="project.demo"
+            href="https://demo.com"
             target="_blank"
             class="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white rounded-lg font-medium shadow transition"
           >
             Preview →
           </a>
           <a
-            :href="project.github"
+            href="https://github.com"
             target="_blank"
             class="inline-flex items-center px-4 py-2.5 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-white rounded-lg font-medium shadow transition"
           >
@@ -95,14 +97,15 @@ const projects = [
       </div>
 
       <!-- Right side -->
-<div class="w-full lg:w-2/3 relative group overflow-hidden flex justify-center items-end h-[500px] top-20 left-20">
-  <img
-    :src="project.image"
-    :alt="project.title"
-    class="rounded-xl shadow-lg object-cover w-full h-auto max-h-[500px] transform translate-y-1/4 group-hover:translate-y-0 transition-transform duration-300 ease-in-out"
-  />
-</div>
-
+      <div
+        class="w-full lg:w-2/3 relative group overflow-hidden flex justify-center items-center h-[400px] top-10"
+      >
+        <img
+          src="/table.png"
+          alt="STAFIO"
+          class="rounded-xl shadow-lg object-contain w-full h-auto max-h-[100%] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 ease-in-out"
+        />
+      </div>
     </div>
   </section>
 </template>
