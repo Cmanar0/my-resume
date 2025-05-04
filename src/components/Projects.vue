@@ -37,8 +37,8 @@
             class="flex items-center justify-center w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full hover:scale-110 transition-transform duration-300"
           >
             <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-              alt="React"
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg"
+              alt="Vue"
               class="w-6 h-6"
             />
           </div>
@@ -46,8 +46,8 @@
             class="flex items-center justify-center w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full hover:scale-110 transition-transform duration-300"
           >
             <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"
-              alt="Spring"
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg"
+              alt="Nuxt"
               class="w-6 h-6"
             />
           </div>
@@ -55,8 +55,17 @@
             class="flex items-center justify-center w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full hover:scale-110 transition-transform duration-300"
           >
             <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
-              alt="PostgreSQL"
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg"
+              alt="Vite"
+              class="w-6 h-6"
+            />
+          </div>
+          <div
+            class="flex items-center justify-center w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full hover:scale-110 transition-transform duration-300"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sentry/sentry-original.svg"
+              alt="Sentry"
               class="w-6 h-6"
             />
           </div>
