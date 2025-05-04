@@ -1,96 +1,114 @@
 <script setup lang="ts">
 const projects = [
   {
-    title: 'Project 1',
-    description: 'A modern web application built with Vue.js and Node.js',
-    image: 'https://via.placeholder.com/600x400',
-    tags: ['Vue.js', 'Node.js', 'MongoDB'],
+    title: 'STAFIO',
+    description:
+      'News Agency Website with admin dashboard. Made with React.js, Java Spring and PostgreSQL.',
+    image: '/table.png',
+    tags: [
+      {
+        name: 'JavaScript',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+      },
+      {
+        name: 'React',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
+      },
+      {
+        name: 'Spring',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg',
+      },
+      {
+        name: 'PostgreSQL',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
+      },
+    ],
     github: 'https://github.com',
-    demo: 'https://demo.com'
+    demo: 'https://demo.com',
   },
-  {
-    title: 'Project 2',
-    description: 'An e-commerce platform with real-time features',
-    image: 'https://via.placeholder.com/600x400',
-    tags: ['React', 'Firebase', 'Stripe'],
-    github: 'https://github.com',
-    demo: 'https://demo.com'
-  },
-  {
-    title: 'Project 3',
-    description: 'A task management application with team collaboration',
-    image: 'https://via.placeholder.com/600x400',
-    tags: ['Vue.js', 'Express', 'PostgreSQL'],
-    github: 'https://github.com',
-    demo: 'https://demo.com'
-  }
 ]
 </script>
 
 <template>
-  <section class="relative py-16 px-4 max-w-4xl mx-auto">
-    <h2 class="text-4xl font-bold text-center mb-32 text-gray-900 dark:text-white relative">
+  <section class="relative py-16 px-4 max-w-6xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white relative">
       Projects
-      <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
+      <div
+        class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
+      ></div>
     </h2>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div
-        v-for="(project, index) in projects"
-        :key="index"
-        class="group relative bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105"
-      >
-        <!-- Project Image -->
-        <div class="relative h-48 overflow-hidden">
-          <img
-            :src="project.image"
-            :alt="project.title"
-            class="w-full h-full object-cover"
-          />
-          <!-- Overlay -->
-          <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-            <a
-              :href="project.github"
-              target="_blank"
-              class="p-2 bg-white rounded-full hover:bg-gray-100 transition-colors"
-              title="View on GitHub"
-            >
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-            </a>
-            <a
-              :href="project.demo"
-              target="_blank"
-              class="p-2 bg-white rounded-full hover:bg-gray-100 transition-colors"
-              title="View Live Demo"
-            >
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-              </svg>
-            </a>
+    <div
+      v-for="(project, index) in projects"
+      :key="index"
+      class="flex flex-col lg:flex-row items-center card-size justify-between bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 mb-12 p-6 lg:p-10 hover:shadow-xl transition-shadow duration-300 relative overflow-hidden"
+    >
+      <div class="absolute inset-0 bg-gradient-to-t from-indigo-900/60 to-transparent z-10 pointer-events-none"></div>
+
+      <!-- Left side -->
+      <div class="w-full lg:w-1/3 space-y-6 text-left relative z-20">
+        <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white">
+          {{ project.title }}
+        </h3>
+
+        <div class="flex items-center gap-4">
+          <div
+            v-for="(tag, tagIndex) in project.tags"
+            :key="tagIndex"
+            class="flex items-center justify-center w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full hover:scale-110 transition-transform duration-300"
+          >
+            <img :src="tag.icon" :alt="tag.name" class="w-6 h-6" />
           </div>
         </div>
-        
-        <!-- Project Info -->
-        <div class="p-6">
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-            {{ project.title }}
-          </h3>
-          <p class="text-gray-600 dark:text-gray-300 mb-4">
-            {{ project.description }}
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span
-              v-for="(tag, tagIndex) in project.tags"
-              :key="tagIndex"
-              class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-xs"
-            >
-              {{ tag }}
-            </span>
-          </div>
+
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+          {{ project.description }}
+        </p>
+
+        <div class="flex gap-4 mt-4">
+          <a
+            :href="project.demo"
+            target="_blank"
+            class="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white rounded-lg font-medium shadow transition"
+          >
+            Preview →
+          </a>
+          <a
+            :href="project.github"
+            target="_blank"
+            class="inline-flex items-center px-4 py-2.5 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-white rounded-lg font-medium shadow transition"
+          >
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.207 11.387.6.111.793-.261.793-.577
+              v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729
+              1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931
+              0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176
+              0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404
+              2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221
+              0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576
+              C20.565 21.796 24 17.298 24 12c0-6.627-5.373-12-12-12z"
+              />
+            </svg>
+          </a>
         </div>
       </div>
+
+      <!-- Right side -->
+<div class="w-full lg:w-2/3 relative group overflow-hidden flex justify-center items-end h-[500px] top-20 left-20">
+  <img
+    :src="project.image"
+    :alt="project.title"
+    class="rounded-xl shadow-lg object-cover w-full h-auto max-h-[500px] transform translate-y-1/4 group-hover:translate-y-0 transition-transform duration-300 ease-in-out"
+  />
+</div>
+
     </div>
   </section>
-</template> 
+</template>
+
+<style scoped>
+.card-size {
+  max-height: 400px;
+}
+</style>
