@@ -191,7 +191,7 @@ onMounted(() => {
     <div class="flex flex-wrap justify-center items-center gap-6">
       <div class="flex flex-col items-center">
         <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-          <img class="w-6 h-6" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" />
+          <img class="w-6 h-6" src="/dj.svg" />
         </div>
         <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Django</span>
       </div>

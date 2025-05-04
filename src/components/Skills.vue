@@ -93,7 +93,7 @@
               <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-16">Backend & Deployment</h3>
               <div class="flex flex-wrap justify-start items-start gap-8">
                 <div class="flex flex-col items-center">
-                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" />
+                  <img class="w-12 h-12 mb-2" src="/dj.svg" />
                   <h4 class="text-xl font-bold mb-2">Django</h4>
                   <p class="text-gray-400 text-sm">Web Framework</p>
                 </div>
