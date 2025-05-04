@@ -157,20 +157,20 @@ onMounted(() => {
     </div>
     <div class="flex flex-wrap justify-center items-center gap-6">
       <div class="flex flex-col items-center">
-        <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-          <img class="w-6 h-6" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" />
+        <div class="flex items-center justify-center w-12 h-12 bg-[#374151] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
+          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" />
         </div>
         <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Vue.js</span>
       </div>
       <div class="flex flex-col items-center">
-        <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-          <img class="w-6 h-6" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxtjs/nuxtjs-original.svg" />
+        <div class="flex items-center justify-center w-12 h-12 bg-[#374151] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
+          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxtjs/nuxtjs-original.svg" />
         </div>
         <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Nuxt.js</span>
       </div>
       <div class="flex flex-col items-center">
-        <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-          <img class="w-6 h-6" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
+        <div class="flex items-center justify-center w-12 h-12 bg-[#374151] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
+          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
         </div>
         <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">React</span>
       </div>
@@ -190,20 +190,20 @@ onMounted(() => {
     </div>
     <div class="flex flex-wrap justify-center items-center gap-6">
       <div class="flex flex-col items-center">
-        <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-          <img class="w-6 h-6" src="/dj.svg" />
+        <div class="flex items-center justify-center w-12 h-12 bg-[#374151] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
+          <img class="w-7 h-7 rounded" src="/dj.svg" />
         </div>
         <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Django</span>
       </div>
       <div class="flex flex-col items-center">
-        <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-          <img class="w-6 h-6" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" />
+        <div class="flex items-center justify-center w-12 h-12 bg-[#374151] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
+          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" />
         </div>
         <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Docker</span>
       </div>
       <div class="flex flex-col items-center">
-        <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-          <img class="w-6 h-6" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" />
+        <div class="flex items-center justify-center w-12 h-12 bg-[#374151] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
+          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" />
         </div>
         <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">PostgreSQL</span>
       </div>
@@ -223,20 +223,20 @@ onMounted(() => {
     </div>
     <div class="flex flex-wrap justify-center items-center gap-6">
       <div class="flex flex-col items-center">
-        <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-          <img class="w-6 h-6" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" />
+        <div class="flex items-center justify-center w-12 h-12 bg-[#374151] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
+          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" />
         </div>
         <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Vue.js</span>
       </div>
       <div class="flex flex-col items-center">
-        <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-          <img class="w-6 h-6" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/quasar/quasar-original.svg" />
+        <div class="flex items-center justify-center w-12 h-12 bg-[#374151] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
+          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/quasar/quasar-original.svg" />
         </div>
         <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Quasar</span>
       </div>
       <div class="flex flex-col items-center">
-        <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-          <img class="w-6 h-6" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/capacitor/capacitor-original.svg" />
+        <div class="flex items-center justify-center w-12 h-12 bg-[#374151] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
+          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/capacitor/capacitor-original.svg" />
         </div>
         <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Capacitor</span>
       </div>

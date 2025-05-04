@@ -25,48 +25,48 @@
 
         <div class="flex items-center gap-4">
           <div
-            class="flex items-center justify-center w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full hover:scale-110 transition-transform duration-300"
+            class="flex items-center justify-center w-12 h-12 bg-[#5244e4] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
               alt="JavaScript"
-              class="w-6 h-6"
+              class="w-7 h-7 rounded"
             />
           </div>
           <div
-            class="flex items-center justify-center w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full hover:scale-110 transition-transform duration-300"
+            class="flex items-center justify-center w-12 h-12 bg-[#5244e4] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg"
               alt="Vue"
-              class="w-6 h-6"
+              class="w-7 h-7"
             />
           </div>
           <div
-            class="flex items-center justify-center w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full hover:scale-110 transition-transform duration-300"
+            class="flex items-center justify-center w-12 h-12 bg-[#5244e4] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg"
               alt="Nuxt"
-              class="w-6 h-6"
+              class="w-7 h-7"
             />
           </div>
           <div
-            class="flex items-center justify-center w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full hover:scale-110 transition-transform duration-300"
+            class="flex items-center justify-center w-12 h-12 bg-[#5244e4] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg"
               alt="Vite"
-              class="w-6 h-6"
+              class="w-7 h-7"
             />
           </div>
           <div
-            class="flex items-center justify-center w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full hover:scale-110 transition-transform duration-300"
+            class="flex items-center justify-center w-12 h-12 bg-[#5244e4] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sentry/sentry-original.svg"
               alt="Sentry"
-              class="w-6 h-6"
+              class="w-7 h-7"
             />
           </div>
         </div>
