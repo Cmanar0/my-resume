@@ -7,9 +7,15 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   
   return {
+    base: '/',
     plugins: [
       vue()
     ],
+    server: {
+      historyApiFallback: true,
+      strictPort: true,
+      port: 3000
+    },
     build: {
       target: 'esnext',
       minify: 'terser',

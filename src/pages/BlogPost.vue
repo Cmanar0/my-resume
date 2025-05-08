@@ -65,7 +65,18 @@ const fetchPost = async (slug: string) => {
 // Computed properties for SEO metadata
 const seoTitle = computed(() => post.value?.seo?.title || post.value?.title || 'Blog Post')
 const seoDescription = computed(() => post.value?.seo?.description || post.value?.description || '')
-const seoImage = computed(() => post.value?.seo?.image?.url || post.value?.featuredImage?.url || '')
+const seoImage = computed(() => {
+  // First try to get the SEO image from CMS
+  if (post.value?.seo?.image?.url) {
+    return post.value.seo.image.url
+  }
+  // Then try to get the featured image from CMS
+  if (post.value?.featuredImage?.url) {
+    return post.value.featuredImage.url
+  }
+  // Fallback to avatar if no images are available
+  return 'https://marianadamus.com/avatar.jpg'
+})
 const twitterCard = computed(() => post.value?.seo?.twitterCard || 'summary_large_image')
 const canonicalUrl = computed(() => `https://marianadamus.com/blog/${post.value?.slug}`)
 
@@ -73,7 +84,7 @@ const canonicalUrl = computed(() => `https://marianadamus.com/blog/${post.value?
 watchEffect(() => {
   if (post.value) {
     useHead({
-      title: seoTitle.value,
+      title: `${seoTitle.value} | Marian Adamus Blog`,
       meta: [
         {
           name: 'description',
@@ -101,8 +112,20 @@ watchEffect(() => {
           content: seoImage.value
         },
         {
+          property: 'og:image:width',
+          content: '1200'
+        },
+        {
+          property: 'og:image:height',
+          content: '630'
+        },
+        {
           property: 'og:image:alt',
           content: post.value.featuredImage?.alt || seoTitle.value
+        },
+        {
+          property: 'og:site_name',
+          content: 'Marian Adamus Blog'
         },
         // Twitter
         {
@@ -127,11 +150,19 @@ watchEffect(() => {
           content: post.value._firstPublishedAt
         },
         {
+          property: 'article:modified_time',
+          content: post.value._firstPublishedAt
+        },
+        {
           property: 'article:author',
           content: post.value.author?.map(a => a.name).join(', ') || ''
         },
         {
           property: 'article:section',
+          content: post.value.topics?.map(t => t.topic).join(', ') || ''
+        },
+        {
+          property: 'article:tag',
           content: post.value.topics?.map(t => t.topic).join(', ') || ''
         }
       ],

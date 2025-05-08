@@ -13,11 +13,11 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Read my latest thoughts on web development, programming, and technology.'
+      content: 'Read my latest thoughts on web development, programming, and technology. Articles about frontend, backend, and full-stack development.'
     },
     {
       name: 'keywords',
-      content: 'blog, web development, programming, technology, Vue.js, React, TypeScript'
+      content: 'blog, web development, programming, technology, Vue.js, React, TypeScript, frontend, backend, full-stack'
     },
     {
       property: 'og:title',
@@ -25,7 +25,7 @@ useHead({
     },
     {
       property: 'og:description',
-      content: 'Read my latest thoughts on web development, programming, and technology.'
+      content: 'Read my latest thoughts on web development, programming, and technology. Articles about frontend, backend, and full-stack development.'
     },
     {
       property: 'og:type',
@@ -34,6 +34,32 @@ useHead({
     {
       property: 'og:url',
       content: 'https://marianadamus.com/blog'
+    },
+    {
+      property: 'og:image',
+      content: 'https://marianadamus.com/avatar.jpg'
+    },
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image'
+    },
+    {
+      name: 'twitter:title',
+      content: 'Blog | Marian Adamus'
+    },
+    {
+      name: 'twitter:description',
+      content: 'Read my latest thoughts on web development, programming, and technology. Articles about frontend, backend, and full-stack development.'
+    },
+    {
+      name: 'twitter:image',
+      content: 'https://marianadamus.com/avatar.jpg'
+    }
+  ],
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://marianadamus.com/blog'
     }
   ]
 })
