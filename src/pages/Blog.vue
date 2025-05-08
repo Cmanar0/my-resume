@@ -186,7 +186,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen w-screen py-16 bg-black text-white">
+  <div class="min-h-screen w-screen bg-black text-white">
     <!-- Hero Section with Filters -->
     <section class="min-h-[80vh] flex flex-col items-center justify-between relative overflow-hidden">
       <!-- Background gradient -->
@@ -240,7 +240,7 @@ onMounted(() => {
               v-if="post.featuredImage?.url"
               :src="post.featuredImage.url"
               :alt="post.featuredImage.alt || post.title"
-              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+              class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
               loading="lazy"
             />
             <div v-else class="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
