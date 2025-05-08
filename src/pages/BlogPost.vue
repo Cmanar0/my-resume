@@ -60,7 +60,6 @@ onMounted(() => {
 const seoTitle = computed(() => post.value?.seo?.title || post.value?.title)
 const seoDescription = computed(() => post.value?.seo?.description || post.value?.content?.substring(0, 160))
 const seoImage = computed(() => post.value?.seo?.image?.url || post.value?.featuredImage?.url)
-const noIndex = computed(() => post.value?.seo?.noIndex || false)
 const twitterCard = computed(() => post.value?.seo?.twitterCard || 'summary_large_image')
 
 // Update head metadata when post is loaded

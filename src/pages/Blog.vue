@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useHead } from '@vueuse/head'
 import { fetchAPI } from '../lib/datocms'
 import type { Post, Topic, Author } from '../types/blog'
@@ -136,42 +136,6 @@ const toggleTopic = (topic: Topic) => {
     if (activeTopics.value.length === 0) {
       const allTopics = topics.value.find(t => t.id === null)
       if (allTopics) allTopics.active = true
-    }
-  }
-  
-  // Fetch posts with updated filters
-  fetchPosts(activeTopics.value, activeAuthors.value)
-  rerender.value++
-}
-
-const toggleAuthor = (author: Author) => {
-  // If clicking "All Authors"
-  if (author.id === null) {
-    // If it was already active, do nothing
-    if (author.active) return
-    
-    // Otherwise, deactivate all other authors and activate "All Authors"
-    authors.value.forEach(a => a.active = a.id === null)
-    activeAuthors.value = []
-  } else {
-    // If clicking a specific author
-    author.active = !author.active
-    
-    // If activating a specific author, deactivate "All Authors"
-    if (author.active) {
-      const allAuthors = authors.value.find(a => a.id === null)
-      if (allAuthors) allAuthors.active = false
-    }
-    
-    // Update active authors
-    activeAuthors.value = authors.value
-      .filter(a => a.active && a.id !== null)
-      .map(a => a.id)
-    
-    // If no authors are selected, activate "All Authors"
-    if (activeAuthors.value.length === 0) {
-      const allAuthors = authors.value.find(a => a.id === null)
-      if (allAuthors) allAuthors.active = true
     }
   }
   
