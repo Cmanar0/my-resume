@@ -162,9 +162,6 @@ onMounted(() => {
           Blog
           <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
         </h1>
-        <p class="text-xl md:text-2xl text-gray-300 mb-8">
-          I decided to document my learning of Django. Join me on my journey to growing from Junior to Senior Django developer.
-        </p>
       </div>
 
       <!-- Topics Filter -->
@@ -187,6 +184,20 @@ onMounted(() => {
             </button>
           </div>
         </div>
+      </div>
+
+      <!-- Description -->
+      <div class="relative z-10 text-center px-4 sm:px-6 lg:px-20 max-w-4xl mx-auto py-32">
+        <h3 class="text-3xl font-semibold text-center">
+          I'm documenting my journey from
+          <span class="bg-gradient-to-r from-[#007EF0] to-[#00DBD9] bg-clip-text text-transparent">Junior</span>
+          to
+          <span class="bg-gradient-to-r from-[#7B28C8] to-[#FD0182] bg-clip-text text-transparent">Senior</span>. 
+          <br>
+          Let's become a
+          <span class="bg-gradient-to-r from-[#FF4F4D] to-[#FAC42B] bg-clip-text text-transparent">Django Developer</span>
+          together.
+        </h3>
       </div>
     </section>
 
