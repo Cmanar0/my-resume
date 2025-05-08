@@ -28,7 +28,7 @@ export interface Post {
   content: string
   _status: string
   _firstPublishedAt: string
-  author: Author | null
+  author: Author[]
   topics: Topic[]
   seo?: {
     title: string
