@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import type { RouteRecordRaw, RouteLocationNormalized, ScrollPosition } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -44,16 +44,8 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior(
-    to: RouteLocationNormalized,
-    from: RouteLocationNormalized,
-    savedPosition: ScrollPosition | null
-  ) {
-    if (savedPosition) {
-      return savedPosition
-    } else {
-      return { top: 0 }
-    }
+  scrollBehavior(_, __, savedPosition) {
+    return savedPosition || { top: 0 }
   }
 })
 
