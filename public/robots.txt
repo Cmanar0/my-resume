@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://your-portfolio-url.com/sitemap.xml
+
+# Disallow crawling of any potential admin or private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+# Allow crawling of all public assets
+Allow: /assets/
+Allow: /images/ 

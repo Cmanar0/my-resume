@@ -14,19 +14,19 @@
               <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-16">Core Technologies</h3>
               <div class="flex flex-wrap justify-start items-start gap-8">
                 <div class="flex flex-col items-center">
-                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" />
+                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5 logo" />
                   <h4 class="text-xl font-bold mb-2">HTML</h4>
                 </div>
                 <div class="flex flex-col items-center">
-                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" />
+                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3 logo" />
                   <h4 class="text-xl font-bold mb-2">CSS</h4>
                 </div>
                 <div class="flex flex-col items-center">
-                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg" />
+                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg" alt="Sass logo" />
                   <h4 class="text-xl font-bold mb-2">SCSS</h4>
                 </div>
                 <div class="flex flex-col items-center">
-                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" />
+                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript logo" />
                   <h4 class="text-xl font-bold mb-2">JavaScript</h4>
                 </div>
                 <div class="flex flex-col items-center">
@@ -45,19 +45,19 @@
               <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-16">Frontend Frameworks</h3>
               <div class="flex flex-wrap justify-start items-start gap-8">
                 <div class="flex flex-col items-center">
-                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" />
+                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" alt="Vue.js logo" />
                   <h4 class="text-xl font-bold mb-2">Vue.js</h4>
                 </div>
                 <div class="flex flex-col items-center">
-                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxtjs/nuxtjs-original.svg" />
+                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxtjs/nuxtjs-original.svg" alt="Nuxt.js logo" />
                   <h4 class="text-xl font-bold mb-2">Nuxt.js</h4>
                 </div>
                 <div class="flex flex-col items-center">
-                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
+                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React logo" />
                   <h4 class="text-xl font-bold mb-2">React</h4>
                 </div>
                 <div class="flex flex-col items-center">
-                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" />
+                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" alt="Next.js logo" />
                   <h4 class="text-xl font-bold mb-2">Next.js</h4>
                 </div>
                 <div class="flex flex-col items-center">
@@ -80,16 +80,16 @@
               <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-16">Backend & Deployment</h3>
               <div class="flex flex-wrap justify-start items-start gap-8">
                 <div class="flex flex-col items-center">
-                  <img class="w-12 h-12 mb-2" src="/dj.svg" />
+                  <img class="w-12 h-12 mb-2" src="/dj.svg" alt="Django logo" />
                   <h4 class="text-xl font-bold mb-2">Django</h4>
                   <p class="text-gray-400 text-sm">Web Framework</p>
                 </div>
                 <div class="flex flex-col items-center">
-                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" />
+                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="PostgreSQL logo" />
                   <h4 class="text-xl font-bold mb-2">PostgreSQL</h4>
                 </div>
                 <div class="flex flex-col items-center">
-                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" />
+                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker logo" />
                   <h4 class="text-xl font-bold mb-2">Docker</h4>
                 </div>
                 <div class="flex flex-col items-center">
