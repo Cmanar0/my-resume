@@ -74,6 +74,12 @@ const fetchPosts = async (selectedTopics: (string | null)[] = [], selectedAuthor
           id
           topic
         }
+        featuredImage {
+          url
+          alt
+          width
+          height
+        }
       }
     }
   `
@@ -180,26 +186,39 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-50 dark:bg-gray-900 py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Blog</h1>
-        <p class="text-xl text-gray-600 dark:text-gray-300">Thoughts on web development and technology</p>
+  <div class="min-h-screen w-screen py-16 bg-black text-white">
+    <!-- Hero Section -->
+    <section class="min-h-[50vh] flex items-center justify-center relative overflow-hidden">
+      <!-- Background gradient -->
+      <div class="absolute inset-0 bg-gradient-to-b from-indigo-500 via-purple-500 to-black opacity-20"></div>
+      
+      <!-- Content -->
+      <div class="relative z-10 text-center px-4 sm:px-6 lg:px-32 max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold text-center mb-32 text-white relative">
+          Blog
+          <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-300 mb-8">
+          I decided to document my learning of Django. Join me on my journey to growing from Junior to Senior Django developer.
+        </p>
       </div>
+    </section>
 
+    <!-- Blog Content -->
+    <div class="w-full px-4 sm:px-6 lg:px-32 py-16">
       <!-- Topics Filter -->
-      <div class="mb-8">
-        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Filter by Topic:</h2>
-        <div class="flex flex-wrap gap-2">
+      <div class="mb-12 text-center max-w-4xl mx-auto">
+        <h2 class="text-lg font-semibold text-white mb-6">Filter by Topic:</h2>
+        <div class="flex flex-wrap justify-center gap-2">
           <button
             v-for="topic in topics"
             :key="topic.id || 'all'"
             @click="toggleTopic(topic)"
-            class="px-4 py-2 rounded-full text-sm font-medium transition-colors"
+            class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-300"
             :class="[
               topic.active
-                ? 'bg-indigo-600 text-white'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/20'
+                : 'bg-gray-900 text-gray-300 hover:bg-gray-800 border border-gray-700'
             ]"
           >
             {{ topic.topic }}
@@ -207,49 +226,58 @@ onMounted(() => {
         </div>
       </div>
 
-      <!-- Authors Filter -->
-      <div class="mb-8">
-        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Filter by Author:</h2>
-        <div class="flex flex-wrap gap-2">
-          <button
-            v-for="author in authors"
-            :key="author.id || 'all'"
-            @click="toggleAuthor(author)"
-            class="px-4 py-2 rounded-full text-sm font-medium transition-colors"
-            :class="[
-              author.active
-                ? 'bg-indigo-600 text-white'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-            ]"
-          >
-            {{ author.name }}
-          </button>
-        </div>
-      </div>
-
       <!-- Posts Grid -->
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-[2000px] mx-auto">
         <article v-for="post in posts" :key="post.id" 
-          class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-          <div class="p-6">
-            <div class="flex items-center gap-2 mb-4">
-              <span class="px-3 py-1 text-sm font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-100 dark:bg-indigo-900/30 rounded-full">
+          class="group relative bg-gray-900/50 backdrop-blur-sm rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 border border-gray-700/50 hover:border-indigo-500/50">
+          <!-- Featured Image -->
+          <div class="relative w-full aspect-[16/9] overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 z-10"></div>
+            <img
+              v-if="post.featuredImage?.url"
+              :src="post.featuredImage.url"
+              :alt="post.featuredImage.alt || post.title"
+              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+              loading="lazy"
+            />
+            <div v-else class="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
+              <svg class="w-12 h-12 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
+          </div>
+
+          <!-- Content -->
+          <div class="p-8 relative">
+            <!-- Status Badge -->
+            <div class="absolute -top-4 right-8">
+              <span class="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full shadow-lg shadow-indigo-500/20">
                 {{ post._status }}
               </span>
             </div>
-            <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-              <router-link :to="`/blog/${post.slug}`" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
-                {{ post.title }}
-              </router-link>
-            </h2>
-            <p class="text-gray-600 dark:text-gray-300 mb-4">{{ post.content.substring(0, 150) }}...</p>
-            <div class="flex items-center justify-between">
-              <time :datetime="post._firstPublishedAt" class="text-sm text-gray-500 dark:text-gray-400">
+
+            <!-- Title and Excerpt -->
+            <div class="space-y-4">
+              <h2 class="text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-indigo-400 group-hover:to-purple-400 transition-all duration-300">
+                <router-link :to="`/blog/${post.slug}`">
+                  {{ post.title }}
+                </router-link>
+              </h2>
+              <p class="text-gray-400 line-clamp-3">{{ post.content.substring(0, 150) }}...</p>
+            </div>
+
+            <!-- Footer -->
+            <div class="mt-6 pt-6 border-t border-gray-700/50 flex items-center justify-between">
+              <time :datetime="post._firstPublishedAt" class="text-sm text-gray-400">
                 {{ new Date(post._firstPublishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }}
               </time>
               <router-link :to="`/blog/${post.slug}`" 
-                class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium">
-                Read more →
+                class="inline-flex items-center text-indigo-400 hover:text-indigo-300 font-medium transition-colors group-hover:translate-x-1 duration-300">
+                Read more
+                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
               </router-link>
             </div>
           </div>
@@ -257,4 +285,4 @@ onMounted(() => {
       </div>
     </div>
   </div>
-</template> 
+</template>

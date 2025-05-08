@@ -29,10 +29,20 @@ export interface Post {
   _firstPublishedAt: string
   author: Author | null
   topics: Topic[]
-  seo?: SEO
+  seo?: {
+    title?: string
+    description?: string
+    image?: {
+      url: string
+    }
+    noIndex?: boolean
+    twitterCard?: string
+  }
   featuredImage?: {
-    alt: string
     url: string
+    alt: string
+    width: number
+    height: number
   }
 }
 
