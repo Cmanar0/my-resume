@@ -20,7 +20,7 @@ export const client = new GraphQLClient(DATOCMS_API_URL, {
   },
 })
 
-export async function fetchAPI<T>(query: string, variables = {}): Promise<T> {
+export async function fetchAPI<T extends Record<string, any>>(query: string, variables = {}): Promise<T> {
   try {
     console.log('Making DatoCMS request with query:', query)
     console.log('Variables:', variables)
@@ -34,7 +34,7 @@ export async function fetchAPI<T>(query: string, variables = {}): Promise<T> {
     }
     
     // Check if the article field exists and is null
-    if ('article' in data && data.article === null) {
+    if (data && typeof data === 'object' && 'article' in data && data.article === null) {
       throw new Error('Article not found in DatoCMS')
     }
     
