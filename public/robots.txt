@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://your-portfolio-url.com/sitemap.xml
+Sitemap: https://marianadamus.com/sitemap.xml
 
 # Allow all public assets
 Allow: /assets/

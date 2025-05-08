@@ -68,7 +68,12 @@ const contacts = [
 
     <!-- SOCIAL ICONS ROW -->
     <div class="flex justify-center items-center gap-6 mb-16 mt-32">
-      <a href="https://linkedin.com/in/yourlinkedin" target="_blank" class="flex items-center justify-center w-12 h-12 bg-[#0A66C2] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
+      <a 
+        href="https://linkedin.com/in/yourlinkedin" 
+        target="_blank" 
+        class="flex items-center justify-center w-12 h-12 bg-[#0A66C2] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm"
+        aria-label="Visit LinkedIn profile"
+      >
         <img 
           class="w-7 h-7 rounded" 
           src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg" 
@@ -78,7 +83,12 @@ const contacts = [
           loading="lazy"
         />
       </a>
-      <a href="https://twitter.com/yourtwitter" target="_blank" class="flex items-center justify-center w-12 h-12 bg-[#1DA1F2] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
+      <a 
+        href="https://twitter.com/yourtwitter" 
+        target="_blank" 
+        class="flex items-center justify-center w-12 h-12 bg-[#1DA1F2] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm"
+        aria-label="Visit Twitter profile"
+      >
         <img 
           class="w-7 h-7 rounded" 
           src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/twitter/twitter-original.svg" 
@@ -88,7 +98,12 @@ const contacts = [
           loading="lazy"
         />
       </a>
-      <a href="https://github.com/yourgithub" target="_blank" class="flex items-center justify-center w-12 h-12 bg-[#181717] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
+      <a 
+        href="https://github.com/yourgithub" 
+        target="_blank" 
+        class="flex items-center justify-center w-12 h-12 bg-[#181717] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm"
+        aria-label="Visit GitHub profile"
+      >
         <img 
           class="w-7 h-7 rounded" 
           src="/github.webp" 
@@ -98,8 +113,18 @@ const contacts = [
           loading="lazy"
         />
       </a>
-      <a href="mailto:your@email.com" class="flex items-center justify-center w-12 h-12 bg-[#EA4335] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
-        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <a 
+        href="mailto:your@email.com" 
+        class="flex items-center justify-center w-12 h-12 bg-[#EA4335] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm"
+        aria-label="Send email to your@email.com"
+      >
+        <svg 
+          class="w-7 h-7 text-white" 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
       </a>
