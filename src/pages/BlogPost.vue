@@ -59,16 +59,25 @@ const fetchPost = async (slug: string) => {
   `
   
   try {
-    const data = await fetchAPI<{ article: Post }>(query)
+    console.log('Fetching article with slug:', slug)
+    const data = await fetchAPI<{ article: Post | null }>(query)
+    console.log('DatoCMS response:', data)
+    
     if (!data.article) {
-      error.value = 'Article not found'
+      console.error('Article not found in DatoCMS:', slug)
+      error.value = `Article "${slug}" not found`
       return
     }
+    
     post.value = data.article
-    console.log('Fetched post:', data.article)
+    console.log('Successfully loaded article:', data.article)
   } catch (err: unknown) {
-    console.error('Error fetching post:', err)
-    error.value = 'Failed to load article'
+    console.error('Error fetching post from DatoCMS:', err)
+    if (err instanceof Error) {
+      error.value = `Failed to load article: ${err.message}`
+    } else {
+      error.value = 'Failed to load article. Please try again later.'
+    }
   } finally {
     isLoading.value = false
   }
@@ -79,6 +88,7 @@ watch(
   () => route.params.slug,
   (newSlug) => {
     if (newSlug) {
+      console.log('Route changed, new slug:', newSlug)
       fetchPost(newSlug as string)
     }
   },
