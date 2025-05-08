@@ -1,23 +1,17 @@
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { loadEnv } from 'vite'
 
-// https://vite.dev/config/
+// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   // Load env file based on `mode` in the current directory.
   const env = loadEnv(mode, process.cwd(), '')
   
   return {
+    plugins: [vue()],
     base: '/',
-    plugins: [
-      vue()
-    ],
     server: {
-      historyApiFallback: {
-        rewrites: [
-          { from: /^\/blog\/.*$/, to: '/index.html' },
-          { from: /^\/.*$/, to: '/index.html' }
-        ]
-      },
+      historyApiFallback: true,
       strictPort: true,
       port: 3000
     },
@@ -32,26 +26,16 @@ export default defineConfig(({ mode }) => {
       },
       rollupOptions: {
         output: {
-          manualChunks: (id) => {
-            if (id.includes('node_modules')) {
-              if (id.includes('@headlessui') || id.includes('@heroicons')) {
-                return 'ui'
-              }
-              if (id.includes('gsap')) {
-                return 'gsap'
-              }
-              if (id.includes('vue')) {
-                return 'vendor'
-              }
-              return 'vendor'
-            }
+          manualChunks: {
+            'vue': ['vue', 'vue-router'],
+            'gsap': ['gsap']
           }
         }
       }
     },
     // Expose env variables to your app
     define: {
-      'import.meta.env.VITE_DATOCMS_API_TOKEN': JSON.stringify(env.VITE_DATOCMS_API_TOKEN)
+      'process.env': env
     }
   }
 })
