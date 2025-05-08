@@ -195,5 +195,5 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+// No imports needed
 </script> 
