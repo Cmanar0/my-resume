@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 import Navbar from './components/Navbar.vue'
 import Intro from './components/Intro.vue'
 import About from './components/About.vue'
@@ -9,6 +10,7 @@ import Skills from './components/Skills.vue'
 import Contact from './components/Contact.vue'
 import SectionDivider from './components/SectionDivider.vue'
 
+const route = useRoute()
 const activeSection = ref('intro')
 
 const scrollToSection = (sectionId: string) => {
@@ -44,7 +46,9 @@ onMounted(() => {
   <div class="min-h-screen bg-black text-white">
     <Navbar :active-section="activeSection" />
     
-    <main class="relative">
+    <router-view v-if="route.path !== '/'"></router-view>
+    
+    <main v-else class="relative">
       <Intro id="intro" @scroll-to-section="scrollToSection" />
       <SectionDivider />
       <About id="about" />
@@ -69,7 +73,6 @@ body {
   background-color: black;
   color: white;
   overflow-x: hidden;
-  
 }
 
 html {

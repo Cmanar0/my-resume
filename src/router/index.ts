@@ -5,47 +5,34 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'home',
-    component: () => import('../App.vue'),
-    children: [
-      {
-        path: '',
-        name: 'intro',
-        component: () => import('../components/Intro.vue')
-      },
-      {
-        path: 'about',
-        name: 'about',
-        component: () => import('../components/About.vue')
-      },
-      {
-        path: 'experience',
-        name: 'experience',
-        component: () => import('../components/Experience.vue')
-      },
-      {
-        path: 'projects',
-        name: 'projects',
-        component: () => import('../components/Projects.vue')
-      },
-      {
-        path: 'skills',
-        name: 'skills',
-        component: () => import('../components/Skills.vue')
-      },
-      {
-        path: 'contact',
-        name: 'contact',
-        component: () => import('../components/Contact.vue')
-      }
-    ]
+    component: () => import('../App.vue')
+  },
+  {
+    path: '/blog',
+    name: 'blog',
+    component: () => import('../pages/Blog.vue')
+  },
+  {
+    path: '/blog/:slug',
+    name: 'blog-post',
+    component: () => import('../pages/BlogPost.vue')
   }
 ]
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior(_, __, savedPosition) {
-    return savedPosition || { top: 0 }
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth'
+      }
+    }
+    if (savedPosition) {
+      return savedPosition
+    }
+    return { top: 0 }
   }
 })
 
