@@ -17,10 +17,19 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor': ['vue', 'vue-router'],
-          'gsap': ['gsap'],
-          'ui': ['@headlessui/vue', '@heroicons/vue']
+        manualChunks: (id) => {
+          if (id.includes('node_modules')) {
+            if (id.includes('@headlessui') || id.includes('@heroicons')) {
+              return 'ui'
+            }
+            if (id.includes('gsap')) {
+              return 'gsap'
+            }
+            if (id.includes('vue')) {
+              return 'vendor'
+            }
+            return 'vendor'
+          }
         }
       }
     }
