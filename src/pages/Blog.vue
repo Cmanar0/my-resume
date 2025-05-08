@@ -261,7 +261,7 @@ onMounted(() => {
           <span class="bg-gradient-to-r from-[#7B28C8] to-[#FD0182] bg-clip-text text-transparent">Senior</span>. 
           <br>
           Let's become a
-          <span class="bg-gradient-to-r from-[#FF4F4D] to-[#FAC42B] bg-clip-text text-transparent">Django Developer</span>
+          <span class="bg-gradient-to-r from-[#FF4F4D] to-[#FAC42B] bg-clip-text text-transparent">Full Stack Developer</span>
           together.
         </h3>
       </div>
