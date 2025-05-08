@@ -78,26 +78,7 @@ onMounted(() => {
             <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
           </h2>
           
-          <!-- Top Section -->
-          <div class="flex flex-col md:flex-row items-center gap-24 mb-24">
-            <!-- Profile Image -->
-            <div ref="imageRef" class="w-48 md:w-48 flex-shrink-0">
-              <div class="relative w-full aspect-square group">
-                <!-- Glow effect -->
-                <div class="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-20 blur-xl group-hover:opacity-30 transition-opacity duration-300"></div>
-                <!-- Image container -->
-                <div class="relative w-full h-full rounded-full overflow-hidden">
-                  <img
-                    src="/me.png"
-                    alt="Marian Adamus"
-                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                  />
-                </div>
-                <!-- Decorative elements -->
-                <div class="absolute -inset-1 rounded-full border-2 border-indigo-500/30 group-hover:border-indigo-500/50 transition-colors duration-300"></div>
-                <div class="absolute -inset-2 rounded-full border-2 border-purple-500/20 group-hover:border-purple-500/30 transition-colors duration-300"></div>
-              </div>
-            </div>
+         
             
             <!-- Content -->
             <div ref="titleRef" class="flex-1 space-y-8">
