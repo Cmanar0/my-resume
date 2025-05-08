@@ -12,7 +12,12 @@ export default defineConfig(({ mode }) => {
       vue()
     ],
     server: {
-      historyApiFallback: true,
+      historyApiFallback: {
+        rewrites: [
+          { from: /^\/blog\/.*$/, to: '/index.html' },
+          { from: /^\/.*$/, to: '/index.html' }
+        ]
+      },
       strictPort: true,
       port: 3000
     },

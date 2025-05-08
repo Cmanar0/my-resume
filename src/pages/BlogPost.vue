@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, computed, watchEffect } from 'vue'
+import { ref, onMounted, computed, watchEffect, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useHead } from '@vueuse/head'
 import { fetchAPI } from '../lib/datocms'
@@ -14,8 +14,13 @@ const md = new MarkdownIt()
 const route = useRoute()
 const post = ref<Post | null>(null)
 const contentRef = ref<HTMLElement | null>(null)
+const isLoading = ref(true)
+const error = ref<string | null>(null)
 
 const fetchPost = async (slug: string) => {
+  isLoading.value = true
+  error.value = null
+  
   const query = `
     {
       article(filter: { slug: { eq: "${slug}" } }) {
@@ -55,12 +60,30 @@ const fetchPost = async (slug: string) => {
   
   try {
     const data = await fetchAPI<{ article: Post }>(query)
+    if (!data.article) {
+      error.value = 'Article not found'
+      return
+    }
     post.value = data.article
     console.log('Fetched post:', data.article)
-  } catch (error) {
-    console.error('Error fetching post:', error)
+  } catch (err: unknown) {
+    console.error('Error fetching post:', err)
+    error.value = 'Failed to load article'
+  } finally {
+    isLoading.value = false
   }
 }
+
+// Watch for route changes to handle direct URL access
+watch(
+  () => route.params.slug,
+  (newSlug) => {
+    if (newSlug) {
+      fetchPost(newSlug as string)
+    }
+  },
+  { immediate: true }
+)
 
 // Computed properties for SEO metadata
 const seoTitle = computed(() => post.value?.seo?.title || post.value?.title || 'Blog Post')
@@ -194,83 +217,91 @@ onMounted(() => {
 
 <template>
   <div class="min-h-screen w-screen bg-black text-white">
-    <!-- Hero Section -->
-    <section class="min-h-[90vh] flex flex-col items-center justify-between relative overflow-hidden">
-      <!-- Background gradient -->
-      <div class="absolute inset-0 bg-gradient-to-b from-indigo-500 via-purple-500 to-black opacity-20"></div>
-      
-      <!-- Main Content -->
-      <div class="relative z-10 w-full px-4 sm:px-6 lg:px-32 pt-32">
-        <div class="max-w-[2000px] mx-auto">
-          <!-- Header -->
-          <div class="flex gap-8 mt-16">
-            <!-- Left side: Title, Author, Date -->
-            <div class="flex-1 flex flex-col justify-between">
-              <div>
-                <h1 class="text-5xl font-bold text-white mb-12 text-left leading-tight">{{ post?.title }}</h1>
-                <div class="flex items-center gap-2">
-                  <span class="text-gray-400">By</span>
-                  <div class="flex items-center gap-2">
-                    <router-link 
-                      v-for="(author, index) in post?.author" 
-                      :key="author.id || index" 
-                      to="/"
-                      class="text-indigo-400 hover:text-indigo-300 transition-colors"
-                    >
-                      {{ author.name }}{{ index < (post?.author?.length || 0) - 1 ? ', ' : '' }}
-                    </router-link>
-                  </div>
-                </div>
-              </div>
-              <div class="flex items-center gap-2 mt-auto">
-                <span class="text-gray-400">Published on</span>
-                <span class="text-white">
-                  {{ post?._firstPublishedAt ? new Date(post._firstPublishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '' }}
-                </span>
-              </div>
-            </div>
-
-            <!-- Right side: Featured Image -->
-            <div v-if="post?.featuredImage" class="flex-1 relative aspect-[16/9]">
-              <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 z-10"></div>
-              <img
-                :src="post.featuredImage.url"
-                :alt="post.featuredImage.alt || post.title"
-                class="w-full h-full object-cover rounded-lg"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Content Section -->
-    <div class="w-full px-4 sm:px-6 lg:px-64 py-16">
-      <div class="max-w-[2000px] mx-auto">
-        <div ref="contentRef" class="prose prose-invert max-w-none text-left prose-headings:text-white prose-p:text-gray-300 prose-a:text-indigo-400 prose-a:hover:text-indigo-300 prose-blockquote:border-indigo-500 prose-code:text-indigo-400 prose-pre:bg-gray-800 prose-img:rounded-lg prose-img:shadow-lg">
-          <div v-if="post" v-html="md.render(post.content)"></div>
-        </div>
-
-        <!-- Topics -->
-        <div class="mt-16 pt-8 border-t border-gray-700 text-center">
-          <h3 class="text-lg font-semibold text-white mb-4">Topics:</h3>
-          <div class="flex flex-wrap justify-center gap-2">
-            <span
-              v-for="topic in post?.topics"
-              :key="topic.topic"
-              class="px-4 py-2 rounded-full text-sm font-medium bg-gray-800 text-gray-300 border border-gray-700"
-            >
-              {{ topic.topic }}
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Loading State -->
-    <div v-if="!post" class="flex items-center justify-center min-h-[400px]">
+    <div v-if="isLoading" class="flex items-center justify-center min-h-screen">
       <div class="text-gray-400">Loading...</div>
     </div>
+
+    <!-- Error State -->
+    <div v-else-if="error" class="flex items-center justify-center min-h-screen">
+      <div class="text-red-400">{{ error }}</div>
+    </div>
+
+    <!-- Content -->
+    <template v-else-if="post">
+      <!-- Hero Section -->
+      <section class="min-h-[90vh] flex flex-col items-center justify-between relative overflow-hidden">
+        <!-- Background gradient -->
+        <div class="absolute inset-0 bg-gradient-to-b from-indigo-500 via-purple-500 to-black opacity-20"></div>
+        
+        <!-- Main Content -->
+        <div class="relative z-10 w-full px-4 sm:px-6 lg:px-32 pt-32">
+          <div class="max-w-[2000px] mx-auto">
+            <!-- Header -->
+            <div class="flex gap-8 mt-16">
+              <!-- Left side: Title, Author, Date -->
+              <div class="flex-1 flex flex-col justify-between">
+                <div>
+                  <h1 class="text-5xl font-bold text-white mb-12 text-left leading-tight">{{ post?.title }}</h1>
+                  <div class="flex items-center gap-2">
+                    <span class="text-gray-400">By</span>
+                    <div class="flex items-center gap-2">
+                      <router-link 
+                        v-for="(author, index) in post?.author" 
+                        :key="author.id || index" 
+                        to="/"
+                        class="text-indigo-400 hover:text-indigo-300 transition-colors"
+                      >
+                        {{ author.name }}{{ index < (post?.author?.length || 0) - 1 ? ', ' : '' }}
+                      </router-link>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 mt-auto">
+                  <span class="text-gray-400">Published on</span>
+                  <span class="text-white">
+                    {{ post?._firstPublishedAt ? new Date(post._firstPublishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '' }}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Right side: Featured Image -->
+              <div v-if="post?.featuredImage" class="flex-1 relative aspect-[16/9]">
+                <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 z-10"></div>
+                <img
+                  :src="post.featuredImage.url"
+                  :alt="post.featuredImage.alt || post.title"
+                  class="w-full h-full object-cover rounded-lg"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Content Section -->
+      <div class="w-full px-4 sm:px-6 lg:px-64 py-16">
+        <div class="max-w-[2000px] mx-auto">
+          <div ref="contentRef" class="prose prose-invert max-w-none text-left prose-headings:text-white prose-p:text-gray-300 prose-a:text-indigo-400 prose-a:hover:text-indigo-300 prose-blockquote:border-indigo-500 prose-code:text-indigo-400 prose-pre:bg-gray-800 prose-img:rounded-lg prose-img:shadow-lg">
+            <div v-if="post" v-html="md.render(post.content)"></div>
+          </div>
+
+          <!-- Topics -->
+          <div class="mt-16 pt-8 border-t border-gray-700 text-center">
+            <h3 class="text-lg font-semibold text-white mb-4">Topics:</h3>
+            <div class="flex flex-wrap justify-center gap-2">
+              <span
+                v-for="topic in post?.topics"
+                :key="topic.topic"
+                class="px-4 py-2 rounded-full text-sm font-medium bg-gray-800 text-gray-300 border border-gray-700"
+              >
+                {{ topic.topic }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
   </div>
 </template>
 
