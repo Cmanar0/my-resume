@@ -16,14 +16,15 @@ const fetchPost = async (slug: string) => {
         title
         slug
         content
-        date
-        readTime
-        category
+        _status
+        _firstPublishedAt
         author {
+          id
           name
-          avatar {
-            url
-          }
+        }
+        topics {
+          id
+          topic
         }
         seo {
           title
@@ -57,7 +58,7 @@ onMounted(() => {
 
 // Computed properties for SEO metadata
 const seoTitle = computed(() => post.value?.seo?.title || post.value?.title)
-const seoDescription = computed(() => post.value?.seo?.description || post.value?.excerpt)
+const seoDescription = computed(() => post.value?.seo?.description || post.value?.content?.substring(0, 160))
 const seoImage = computed(() => post.value?.seo?.image?.url || post.value?.featuredImage?.url)
 const noIndex = computed(() => post.value?.seo?.noIndex || false)
 const twitterCard = computed(() => post.value?.seo?.twitterCard || 'summary_large_image')
@@ -90,11 +91,11 @@ watchEffect(() => {
         },
         {
           property: 'article:published_time',
-          content: post.value.date
+          content: post.value._firstPublishedAt
         },
         {
           property: 'article:author',
-          content: post.value.author.name
+          content: post.value.author?.name || ''
         },
         {
           property: 'og:image',
@@ -128,20 +129,14 @@ watchEffect(() => {
       <div class="mb-8">
         <h1 class="text-4xl font-bold mb-4">{{ post.title }}</h1>
         <div class="flex items-center space-x-4 text-gray-600 dark:text-gray-400">
-          <span>{{ post.date }}</span>
+          <time :datetime="post._firstPublishedAt">
+            {{ new Date(post._firstPublishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }}
+          </time>
           <span>•</span>
-          <span>{{ post.readTime }}</span>
-          <span>•</span>
-          <span>{{ post.category }}</span>
+          <span>{{ post._status }}</span>
         </div>
         <div class="flex items-center mt-4">
-          <img
-            v-if="post.author.avatar"
-            :src="post.author.avatar.url"
-            :alt="post.author.name"
-            class="w-10 h-10 rounded-full mr-3"
-          />
-          <span class="text-gray-700 dark:text-gray-300">{{ post.author.name }}</span>
+          <span class="text-gray-700 dark:text-gray-300">{{ post.author?.name }}</span>
         </div>
       </div>
 

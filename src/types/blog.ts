@@ -5,7 +5,9 @@ export interface Topic {
 }
 
 export interface Author {
+  id: string | null
   name: string
+  active: boolean
 }
 
 export interface SEO {
@@ -25,7 +27,7 @@ export interface Post {
   content: string
   _status: string
   _firstPublishedAt: string
-  author: Author
+  author: Author | null
   topics: Topic[]
   seo?: SEO
   featuredImage?: {
