@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter, useRoute } from 'vue-router'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 defineProps<{
   activeSection: string
@@ -8,13 +8,13 @@ defineProps<{
 
 const router = useRouter()
 const route = useRoute()
+const isMenuOpen = ref(false)
 
 const isBlogActive = computed(() => {
   return route.path.startsWith('/blog')
 })
 
 const sections = [
-  { id: 'intro', label: 'Home' },
   { id: 'about', label: 'About' },
   { id: 'projects', label: 'Projects' },
   { id: 'experience', label: 'Experience' },
@@ -26,6 +26,9 @@ const scrollToSection = async (sectionId: string, event?: Event) => {
   if (event) {
     event.preventDefault()
   }
+
+  // Close mobile menu if open
+  isMenuOpen.value = false
 
   // If we're not on the home page, navigate there first
   if (route.path !== '/') {
@@ -50,10 +53,15 @@ const scrollToSection = async (sectionId: string, event?: Event) => {
 
 const navigateToHome = (event: Event) => {
   event.preventDefault()
+  isMenuOpen.value = false
   router.push('/')
   setTimeout(() => {
     scrollToSection('intro')
   }, 100)
+}
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
 }
 </script>
 
@@ -78,7 +86,9 @@ const navigateToHome = (event: Event) => {
             Marian Adamus
           </a>
         </div>
-        <div class="hidden md:block">
+
+        <!-- Desktop Menu -->
+        <div class="hidden lg:block">
           <div class="flex space-x-8">
             <a
               v-for="section in sections"
@@ -99,7 +109,88 @@ const navigateToHome = (event: Event) => {
             </router-link>
           </div>
         </div>
+
+        <!-- Mobile menu button -->
+        <div class="lg:hidden">
+          <button
+            @click="toggleMenu"
+            class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Open main menu</span>
+            <!-- Icon when menu is closed -->
+            <svg
+              v-if="!isMenuOpen"
+              class="block h-6 w-6"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <!-- Icon when menu is open -->
+            <svg
+              v-else
+              class="block h-6 w-6"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div
+        v-show="isMenuOpen"
+        class="lg:hidden"
+      >
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a
+            v-for="section in sections"
+            :key="section.id"
+            :href="`/#${section.id}`"
+            @click="(e) => scrollToSection(section.id, e)"
+            class="block px-3 py-2 rounded-md text-base font-medium cursor-pointer transition-colors"
+            :class="[
+              !isBlogActive && activeSection === section.id
+                ? 'text-indigo-600 dark:text-indigo-400'
+                : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+            ]"
+          >
+            {{ section.label }}
+          </a>
+          <router-link
+            to="/blog"
+            class="block px-3 py-2 rounded-md text-base font-medium cursor-pointer transition-colors"
+            :class="[
+              isBlogActive
+                ? 'text-indigo-600 dark:text-indigo-400'
+                : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+            ]"
+          >
+            Blog
+          </router-link>
+        </div>
       </div>
     </div>
   </nav>
 </template>
+
+<style scoped>
+.lg\:hidden {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .lg\:hidden {
+    display: block;
+  }
+}
+</style>
