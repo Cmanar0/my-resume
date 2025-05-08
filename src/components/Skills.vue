@@ -14,11 +14,25 @@
               <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-16">Core Technologies</h3>
               <div class="flex flex-wrap justify-start items-start gap-8">
                 <div class="flex flex-col items-center">
-                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5 logo" />
+                  <img 
+                    class="w-12 h-12 mb-2" 
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" 
+                    alt="HTML5"
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                  />
                   <h4 class="text-xl font-bold mb-2">HTML</h4>
                 </div>
                 <div class="flex flex-col items-center">
-                  <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3 logo" />
+                  <img 
+                    class="w-12 h-12 mb-2" 
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" 
+                    alt="CSS3"
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                  />
                   <h4 class="text-xl font-bold mb-2">CSS</h4>
                 </div>
                 <div class="flex flex-col items-center">

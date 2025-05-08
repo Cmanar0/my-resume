@@ -69,13 +69,34 @@ const contacts = [
     <!-- SOCIAL ICONS ROW -->
     <div class="flex justify-center items-center gap-6 mb-16 mt-32">
       <a href="https://linkedin.com/in/yourlinkedin" target="_blank" class="flex items-center justify-center w-12 h-12 bg-[#0A66C2] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
-        <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg" />
+        <img 
+          class="w-7 h-7 rounded" 
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg" 
+          alt="LinkedIn Profile"
+          width="28"
+          height="28"
+          loading="lazy"
+        />
       </a>
       <a href="https://twitter.com/yourtwitter" target="_blank" class="flex items-center justify-center w-12 h-12 bg-[#1DA1F2] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
-        <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/twitter/twitter-original.svg" />
+        <img 
+          class="w-7 h-7 rounded" 
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/twitter/twitter-original.svg" 
+          alt="Twitter Profile"
+          width="28"
+          height="28"
+          loading="lazy"
+        />
       </a>
       <a href="https://github.com/yourgithub" target="_blank" class="flex items-center justify-center w-12 h-12 bg-[#181717] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
-        <img class="w-7 h-7 rounded" src="/github.webp" />
+        <img 
+          class="w-7 h-7 rounded" 
+          src="/github.webp" 
+          alt="GitHub Profile"
+          width="28"
+          height="28"
+          loading="lazy"
+        />
       </a>
       <a href="mailto:your@email.com" class="flex items-center justify-center w-12 h-12 bg-[#EA4335] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
         <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
