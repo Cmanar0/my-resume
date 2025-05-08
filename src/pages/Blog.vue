@@ -231,43 +231,43 @@ onMounted(() => {
       <!-- Posts Grid -->
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-[2000px] mx-auto">
         <article v-for="post in posts" :key="post.id" 
-          class="group relative bg-gray-900/50 backdrop-blur-sm rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 border border-gray-700/50 hover:border-indigo-500/50 cursor-pointer"
+          class="group relative bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:bg-black/50 transition-all duration-300 cursor-pointer"
           @click="() => $router.push(`/blog/${post.slug}`)">
           <!-- Featured Image -->
-          <div class="relative w-full aspect-[16/9] overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 z-10"></div>
+          <div class="relative w-full aspect-[16/9] overflow-hidden rounded-t-xl">
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 z-10 rounded-t-xl"></div>
             <img
               v-if="post.featuredImage?.url"
               :src="post.featuredImage.url"
               :alt="post.featuredImage.alt || post.title"
-              class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+              class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300 rounded-t-xl"
               loading="lazy"
             />
-            <div v-else class="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
+            <div v-else class="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-t-xl">
               <svg class="w-12 h-12 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
             </div>
-            <div class="absolute inset-0 bg-gradient-to-t from-transparent via-gray-900/30 to-gray-900/80 opacity-100 group-hover:opacity-0 transition-opacity duration-300"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-transparent via-gray-900/20 to-gray-900/60 opacity-100 group-hover:opacity-0 transition-opacity duration-300 rounded-t-xl"></div>
           </div>
 
           <!-- Content -->
           <div class="p-8 relative">
             <!-- Publishing Date Badge -->
             <div class="absolute -top-4 right-8">
-              <span class="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full shadow-lg shadow-indigo-500/20">
+              <span class="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-indigo-500/80 to-purple-500/80 rounded-full shadow-lg shadow-indigo-500/10">
                 {{ new Date(post._firstPublishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }}
               </span>
             </div>
 
             <!-- Title and Excerpt -->
             <div class="space-y-4">
-              <h2 class="text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-indigo-400 group-hover:to-purple-400 transition-all duration-300">
+              <h2 class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-white transition-all duration-300">
                 <router-link :to="`/blog/${post.slug}`" class="hover:no-underline">
                   {{ post.title }}
                 </router-link>
               </h2>
-              <p class="text-gray-400 line-clamp-3">{{ post.content.substring(0, 150) }}...</p>
+              <p class="text-gray-600 dark:text-gray-300 line-clamp-3">{{ post.content.substring(0, 150) }}...</p>
             </div>
 
             <!-- Tags -->
@@ -275,7 +275,7 @@ onMounted(() => {
               <span
                 v-for="topic in post.topics"
                 :key="topic.id || topic.topic"
-                class="px-3 py-1 text-xs font-medium text-indigo-400 bg-indigo-900/20 rounded-full border border-indigo-500/20"
+                class="px-3 py-1 text-xs font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-100 dark:bg-indigo-900/20 rounded-full border border-indigo-200 dark:border-indigo-700"
               >
                 {{ topic.topic }}
               </span>
