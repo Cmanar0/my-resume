@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useHead } from '@vueuse/head'
+import { fetchAPI } from '../lib/datocms'
+import type { Post, Topic } from '../types/blog'
 
 useHead({
   title: 'Blog | Marian Adamus',
@@ -32,35 +34,55 @@ useHead({
   ]
 })
 
-const posts = ref([
-  {
-    id: 1,
-    title: 'Getting Started with Vue 3 and TypeScript',
-    excerpt: 'Learn how to set up a modern Vue 3 project with TypeScript and best practices for type safety.',
-    date: '2024-05-01',
-    readTime: '5 min read',
-    category: 'Vue.js',
-    slug: 'getting-started-with-vue3-typescript'
-  },
-  {
-    id: 2,
-    title: 'Building Responsive UIs with Tailwind CSS',
-    excerpt: 'A comprehensive guide to creating beautiful, responsive user interfaces using Tailwind CSS.',
-    date: '2024-04-15',
-    readTime: '7 min read',
-    category: 'CSS',
-    slug: 'building-responsive-uis-tailwind'
-  },
-  {
-    id: 3,
-    title: 'State Management in Modern Web Applications',
-    excerpt: 'Exploring different state management solutions and when to use them in your web applications.',
-    date: '2024-04-01',
-    readTime: '8 min read',
-    category: 'Web Development',
-    slug: 'state-management-modern-web'
-  }
+const posts = ref<Post[]>([])
+const topics = ref<Topic[]>([
+  { id: null, topic: 'All Topics', active: true },
+  { id: 'webdev', topic: 'Web Development', active: false },
+  { id: 'frontend', topic: 'Frontend', active: false },
+  { id: 'backend', topic: 'Backend', active: false },
+  { id: 'mobile', topic: 'Mobile Development', active: false }
 ])
+const activeTopics = ref<(string | null)[]>([])
+
+const fetchPosts = async () => {
+  const query = `
+    {
+      allArticles {
+        id
+        title
+        _status
+        _firstPublishedAt
+        slug
+        content
+        author {
+          name
+        }
+        topics {
+          id
+          topic
+        }
+      }
+    }
+  `
+  
+  try {
+    const data = await fetchAPI<{ allArticles: Post[] }>(query)
+    posts.value = data.allArticles
+  } catch (error) {
+    console.error('Error fetching posts:', error)
+  }
+}
+
+const toggleTopic = (topic: Topic) => {
+  topic.active = !topic.active
+  activeTopics.value = topics.value
+    .filter(t => t.active && t.id !== null)
+    .map(t => t.id)
+}
+
+onMounted(() => {
+  fetchPosts()
+})
 </script>
 
 <template>
@@ -77,19 +99,18 @@ const posts = ref([
           <div class="p-6">
             <div class="flex items-center gap-2 mb-4">
               <span class="px-3 py-1 text-sm font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-100 dark:bg-indigo-900/30 rounded-full">
-                {{ post.category }}
+                {{ post._status }}
               </span>
-              <span class="text-sm text-gray-500 dark:text-gray-400">{{ post.readTime }}</span>
             </div>
             <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
               <router-link :to="`/blog/${post.slug}`" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
                 {{ post.title }}
               </router-link>
             </h2>
-            <p class="text-gray-600 dark:text-gray-300 mb-4">{{ post.excerpt }}</p>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">{{ post.content.substring(0, 150) }}...</p>
             <div class="flex items-center justify-between">
-              <time :datetime="post.date" class="text-sm text-gray-500 dark:text-gray-400">
-                {{ new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }}
+              <time :datetime="post._firstPublishedAt" class="text-sm text-gray-500 dark:text-gray-400">
+                {{ new Date(post._firstPublishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }}
               </time>
               <router-link :to="`/blog/${post.slug}`" 
                 class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium">
