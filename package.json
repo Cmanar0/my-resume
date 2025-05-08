@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/head": "^2.0.0",
     "@vueuse/motion": "^2.0.0",
     "flubber": "^0.4.2",
     "gsap": "^3.13.0",

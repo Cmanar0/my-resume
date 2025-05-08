@@ -158,19 +158,19 @@ onMounted(() => {
     <div class="flex flex-wrap justify-center items-center gap-6">
       <div class="flex flex-col items-center">
         <div class="flex items-center justify-center w-12 h-12 bg-[#374151] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
-          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" />
+          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" alt="Vue.js logo" />
         </div>
         <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Vue.js</span>
       </div>
       <div class="flex flex-col items-center">
         <div class="flex items-center justify-center w-12 h-12 bg-[#374151] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
-          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxtjs/nuxtjs-original.svg" />
+          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxtjs/nuxtjs-original.svg" alt="Nuxt.js logo" />
         </div>
         <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Nuxt.js</span>
       </div>
       <div class="flex flex-col items-center">
         <div class="flex items-center justify-center w-12 h-12 bg-[#374151] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
-          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
+          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React logo" />
         </div>
         <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">React</span>
       </div>
@@ -191,19 +191,19 @@ onMounted(() => {
     <div class="flex flex-wrap justify-center items-center gap-6">
       <div class="flex flex-col items-center">
         <div class="flex items-center justify-center w-12 h-12 bg-[#374151] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
-          <img class="w-7 h-7 rounded" src="/dj.svg" />
+          <img class="w-7 h-7 rounded" src="/dj.svg" alt="Django logo" />
         </div>
         <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Django</span>
       </div>
       <div class="flex flex-col items-center">
         <div class="flex items-center justify-center w-12 h-12 bg-[#374151] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
-          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" />
+          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker logo" />
         </div>
         <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Docker</span>
       </div>
       <div class="flex flex-col items-center">
         <div class="flex items-center justify-center w-12 h-12 bg-[#374151] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
-          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" />
+          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="PostgreSQL logo" />
         </div>
         <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">PostgreSQL</span>
       </div>
@@ -224,19 +224,19 @@ onMounted(() => {
     <div class="flex flex-wrap justify-center items-center gap-6">
       <div class="flex flex-col items-center">
         <div class="flex items-center justify-center w-12 h-12 bg-[#374151] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
-          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" />
+          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" alt="Vue.js logo" />
         </div>
         <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Vue.js</span>
       </div>
       <div class="flex flex-col items-center">
         <div class="flex items-center justify-center w-12 h-12 bg-[#374151] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
-          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/quasar/quasar-original.svg" />
+          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/quasar/quasar-original.svg" alt="Quasar logo" />
         </div>
         <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Quasar</span>
       </div>
       <div class="flex flex-col items-center">
         <div class="flex items-center justify-center w-12 h-12 bg-[#374151] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm">
-          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/capacitor/capacitor-original.svg" />
+          <img class="w-7 h-7 rounded" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/capacitor/capacitor-original.svg" alt="Capacitor logo" />
         </div>
         <span class="mt-2 text-sm text-gray-700 dark:text-gray-300">Capacitor</span>
       </div>
