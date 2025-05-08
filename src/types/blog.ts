@@ -24,25 +24,26 @@ export interface Post {
   id: string
   title: string
   slug: string
+  description: string
   content: string
   _status: string
   _firstPublishedAt: string
   author: Author | null
   topics: Topic[]
   seo?: {
-    title?: string
-    description?: string
+    title: string
+    description: string
     image?: {
       url: string
     }
-    noIndex?: boolean
-    twitterCard?: string
+    noIndex: boolean
+    twitterCard: string
   }
   featuredImage?: {
     url: string
-    alt: string
-    width: number
-    height: number
+    alt?: string
+    width?: number
+    height?: number
   }
 }
 

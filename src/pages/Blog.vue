@@ -77,6 +77,7 @@ const fetchPosts = async (selectedTopics: (string | null)[] = [], selectedAuthor
         _status
         _firstPublishedAt
         slug
+        description
         content
         author {
           id
@@ -85,6 +86,15 @@ const fetchPosts = async (selectedTopics: (string | null)[] = [], selectedAuthor
         topics {
           id
           topic
+        }
+        seo {
+          title
+          description
+          image {
+            url
+          }
+          noIndex
+          twitterCard
         }
         featuredImage {
           url
@@ -99,6 +109,7 @@ const fetchPosts = async (selectedTopics: (string | null)[] = [], selectedAuthor
   try {
     const data = await fetchAPI<{ allArticles: Post[] }>(query)
     posts.value = data.allArticles
+    console.log('Fetched posts:', data.allArticles)
 
     // Extract unique authors from posts
     const uniqueAuthors = new Map<string, Author>()
@@ -303,12 +314,12 @@ onMounted(() => {
 
             <!-- Title and Excerpt -->
             <div class="space-y-4">
-              <h2 class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-white transition-all duration-300">
-                <router-link :to="`/blog/${post.slug}`" class="hover:no-underline">
+              <h2 class="text-2xl font-bold text-white group-hover:text-white transition-all duration-300 text-left">
+                <router-link :to="`/blog/${post.slug}`" class="text-white hover:no-underline">
                   {{ post.title }}
                 </router-link>
               </h2>
-              <p class="text-gray-600 dark:text-gray-300 line-clamp-3">{{ post.content.substring(0, 150) }}...</p>
+              <p class="text-gray-600 dark:text-gray-300 line-clamp-3 text-left">{{ post.description.substring(0, 250) }}...</p>
             </div>
 
             <!-- Tags -->
