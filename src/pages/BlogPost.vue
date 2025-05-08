@@ -63,21 +63,23 @@ const fetchPost = async (slug: string) => {
 }
 
 // Computed properties for SEO metadata
-const seoTitle = computed(() => post.value?.seo?.title || post.value?.title)
-const seoDescription = computed(() => post.value?.seo?.description || post.value?.description)
-const seoImage = computed(() => post.value?.seo?.image?.url || post.value?.featuredImage?.url)
+const seoTitle = computed(() => post.value?.seo?.title || post.value?.title || 'Blog Post')
+const seoDescription = computed(() => post.value?.seo?.description || post.value?.description || '')
+const seoImage = computed(() => post.value?.seo?.image?.url || post.value?.featuredImage?.url || '')
 const twitterCard = computed(() => post.value?.seo?.twitterCard || 'summary_large_image')
+const canonicalUrl = computed(() => `https://marianadamus.com/blog/${post.value?.slug}`)
 
 // Update head metadata when post is loaded
 watchEffect(() => {
   if (post.value) {
     useHead({
-      title: `${seoTitle.value} | Marian Adamus Blog`,
+      title: seoTitle.value,
       meta: [
         {
           name: 'description',
           content: seoDescription.value
         },
+        // Open Graph
         {
           property: 'og:title',
           content: seoTitle.value
@@ -92,20 +94,17 @@ watchEffect(() => {
         },
         {
           property: 'og:url',
-          content: `https://marianadamus.com/blog/${post.value.slug}`
-        },
-        {
-          property: 'article:published_time',
-          content: post.value._firstPublishedAt
-        },
-        {
-          property: 'article:author',
-          content: post.value.author?.map(a => a.name).join(', ') || ''
+          content: canonicalUrl.value
         },
         {
           property: 'og:image',
           content: seoImage.value
         },
+        {
+          property: 'og:image:alt',
+          content: post.value.featuredImage?.alt || seoTitle.value
+        },
+        // Twitter
         {
           name: 'twitter:card',
           content: twitterCard.value
@@ -121,6 +120,25 @@ watchEffect(() => {
         {
           name: 'twitter:image',
           content: seoImage.value
+        },
+        // Article specific
+        {
+          property: 'article:published_time',
+          content: post.value._firstPublishedAt
+        },
+        {
+          property: 'article:author',
+          content: post.value.author?.map(a => a.name).join(', ') || ''
+        },
+        {
+          property: 'article:section',
+          content: post.value.topics?.map(t => t.topic).join(', ') || ''
+        }
+      ],
+      link: [
+        {
+          rel: 'canonical',
+          href: canonicalUrl.value
         }
       ]
     })
