@@ -51,6 +51,14 @@ const activeTopics = ref<(string | null)[]>([])
 const activeAuthors = ref<(string | null)[]>([])
 const rerender = ref(0)
 
+const sectionRef = ref<HTMLElement | null>(null)
+const titleRef = ref<HTMLElement | null>(null)
+const descriptionRef = ref<HTMLElement | null>(null)
+const filterRef = ref<HTMLElement | null>(null)
+const postsRef = ref<HTMLElement | null>(null)
+
+const visibleButtons = ref<number[]>([])
+
 const fetchPosts = async (selectedTopics: (string | null)[] = [], selectedAuthors: (string | null)[] = []) => {
   const query = `
     {
@@ -144,21 +152,37 @@ const toggleTopic = (topic: Topic) => {
   rerender.value++
 }
 
+const showButtonsSequentially = () => {
+  const totalButtons = topics.value.length
+  let currentIndex = 0
+
+  const showNextButton = () => {
+    if (currentIndex < totalButtons) {
+      visibleButtons.value.push(currentIndex)
+      currentIndex++
+      setTimeout(showNextButton, 300)
+    }
+  }
+
+  showNextButton()
+}
+
 onMounted(() => {
   fetchPosts()
+  showButtonsSequentially()
 })
 </script>
 
 <template>
   <div class="min-h-screen w-screen bg-black text-white">
     <!-- Hero Section with Filters -->
-    <section class="min-h-[80vh] flex flex-col items-center justify-between relative overflow-hidden">
+    <section ref="sectionRef" class="min-h-[80vh] flex flex-col items-center justify-between relative overflow-hidden">
       <!-- Background gradient -->
       <div class="absolute inset-0 bg-gradient-to-b from-indigo-500 via-purple-500 to-black opacity-20"></div>
       
       <!-- Main Content -->
       <div class="relative z-10 text-center px-4 sm:px-6 lg:px-32 max-w-4xl mx-auto pt-32">
-        <h1 class="text-4xl font-bold text-center mb-32 text-white relative">
+        <h1 ref="titleRef" class="text-4xl font-bold text-center mb-32 text-white relative">
           Blog
           <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
         </h1>
@@ -168,13 +192,14 @@ onMounted(() => {
       <div class="relative z-10 w-full px-4 sm:px-6 lg:px-32 pb-16">
         <div class="max-w-4xl mx-auto">
           <h2 class="text-lg font-semibold text-white mb-6 text-center">Filter by Topic:</h2>
-          <div class="flex flex-wrap justify-center gap-2">
+          <div ref="filterRef" class="flex flex-wrap justify-center gap-2">
             <button
-              v-for="topic in topics"
+              v-for="(topic, index) in topics"
               :key="topic.id || 'all'"
               @click="toggleTopic(topic)"
-              class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-300"
+              class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 transform translate-y-4 opacity-0"
               :class="[
+                visibleButtons.includes(index) ? 'translate-y-0 opacity-100' : '',
                 topic.active
                   ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/20'
                   : 'bg-gray-900/50 backdrop-blur-sm text-gray-300 hover:bg-gray-800 border border-gray-700'
@@ -187,7 +212,7 @@ onMounted(() => {
       </div>
 
       <!-- Description -->
-      <div class="relative z-10 text-center px-4 sm:px-6 lg:px-20 max-w-4xl mx-auto py-32">
+      <div ref="descriptionRef" class="relative z-10 text-center px-4 sm:px-6 lg:px-20 max-w-4xl mx-auto py-32">
         <h3 class="text-3xl font-semibold text-center">
           I'm documenting my journey from
           <span class="bg-gradient-to-r from-[#007EF0] to-[#00DBD9] bg-clip-text text-transparent">Junior</span>
@@ -204,7 +229,7 @@ onMounted(() => {
     <!-- Blog Content -->
     <div class="w-full px-4 sm:px-6 lg:px-32 py-16">
       <!-- Posts Grid -->
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-[2000px] mx-auto">
+      <div ref="postsRef" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-[2000px] mx-auto">
         <article v-for="post in posts" :key="post.id" 
           class="group relative bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:bg-black/50 transition-all duration-300 cursor-pointer"
           @click="() => $router.push(`/blog/${post.slug}`)">
