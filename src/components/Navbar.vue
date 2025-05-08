@@ -16,8 +16,8 @@ const isBlogActive = computed(() => {
 const sections = [
   { id: 'intro', label: 'Home' },
   { id: 'about', label: 'About' },
-  { id: 'experience', label: 'Experience' },
   { id: 'projects', label: 'Projects' },
+  { id: 'experience', label: 'Experience' },
   { id: 'skills', label: 'All Hard Skills' },
   { id: 'contact', label: 'Contact' }
 ]
@@ -86,7 +86,7 @@ const navigateToHome = (event: Event) => {
               :href="`/#${section.id}`"
               @click="(e) => scrollToSection(section.id, e)"
               class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer transition-colors"
-              :class="{ 'text-indigo-600 dark:text-indigo-400': activeSection === section.id }"
+              :class="{ 'text-indigo-600 dark:text-indigo-400': !isBlogActive && activeSection === section.id }"
             >
               {{ section.label }}
             </a>

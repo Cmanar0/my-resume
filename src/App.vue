@@ -53,9 +53,9 @@ onMounted(() => {
       <SectionDivider />
       <About id="about" />
       <SectionDivider />
-      <Experience id="experience" />
-      <SectionDivider />
       <Projects id="projects" />
+      <SectionDivider />
+      <Experience id="experience" />
       <SectionDivider />
       <Skills id="skills" />
       <SectionDivider />
