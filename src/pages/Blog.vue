@@ -3,6 +3,10 @@ import { ref, onMounted } from 'vue'
 import { useHead } from '@vueuse/head'
 import { fetchAPI } from '../lib/datocms'
 import type { Post, Topic, Author } from '../types/blog'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 useHead({
   title: 'Blog | Marian Adamus',
@@ -170,6 +174,43 @@ const showButtonsSequentially = () => {
 onMounted(() => {
   fetchPosts()
   showButtonsSequentially()
+
+  // Animate title
+  if (titleRef.value) {
+    gsap.from(titleRef.value, {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: 'power2.out'
+    })
+  }
+
+  // Animate description
+  if (descriptionRef.value) {
+    gsap.from(descriptionRef.value, {
+      y: 30,
+      opacity: 0,
+      duration: 1,
+      delay: 0.3,
+      ease: 'power2.out'
+    })
+  }
+
+  // Animate posts
+  if (postsRef.value) {
+    gsap.from(postsRef.value.children, {
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: postsRef.value,
+        start: 'top bottom-=100',
+        toggleActions: 'play none none reverse'
+      }
+    })
+  }
 })
 </script>
 
