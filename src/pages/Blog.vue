@@ -116,11 +116,15 @@ const fetchPosts = async (selectedTopics: (string | null)[] = [], selectedAuthor
     uniqueAuthors.set('all', { id: null, name: 'All Authors', active: true })
     
     data.allArticles.forEach(post => {
-      if (post.author?.id) {
-        uniqueAuthors.set(post.author.id, {
-          id: post.author.id,
-          name: post.author.name,
-          active: false
+      if (post.author && post.author.length > 0) {
+        post.author.forEach(author => {
+          if (author.id) {
+            uniqueAuthors.set(author.id, {
+              id: author.id,
+              name: author.name,
+              active: false
+            })
+          }
         })
       }
     })
