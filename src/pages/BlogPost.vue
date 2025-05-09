@@ -302,12 +302,13 @@ onMounted(() => {
               </div>
 
               <!-- Right side: Featured Image -->
-              <div v-if="post?.featuredImage" class="flex-1 relative aspect-[16/9]">
+              <div v-if="post?.featuredImage" class="flex-1 relative aspect-[16/9] max-w-2xl mx-auto">
                 <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 z-10"></div>
                 <img
                   :src="post.featuredImage.url"
                   :alt="post.featuredImage.alt || post.title"
-                  class="w-full h-full object-cover rounded-lg"
+                  class="w-full h-full object-cover rounded-lg shadow-lg"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -389,8 +390,11 @@ onMounted(() => {
 }
 
 .prose img {
-  @apply rounded-lg shadow-lg my-8 max-w-full h-auto mx-auto;
+  @apply rounded-lg shadow-lg my-8 mx-auto;
+  max-width: 100%;
   max-height: 600px;
+  width: auto;
+  height: auto;
   object-fit: contain;
 }
 
@@ -531,5 +535,81 @@ onMounted(() => {
 /* Optional: Add a subtle border */
 .shiki {
   @apply border border-gray-700;
+}
+
+/* Disclaimer Block Styling */
+.prose .disclaimer-block {
+  @apply my-8 p-6 rounded-lg border-l-4 border-yellow-500 bg-yellow-500/10 relative;
+}
+
+.prose .disclaimer-block::before {
+  content: "⚠️ Disclaimer";
+  @apply block text-yellow-500 font-semibold mb-2 text-lg;
+}
+
+.prose .disclaimer-block a {
+  @apply text-yellow-500 hover:text-yellow-400 underline transition-colors;
+}
+
+.prose .disclaimer-block p {
+  @apply text-gray-300 mb-0;
+}
+
+/* Important Block Styling */
+.prose .important-block {
+  @apply my-8 p-6 rounded-lg border-l-4 border-blue-500 bg-blue-500/10 relative;
+}
+
+.prose .important-block::before {
+  content: "💡 Important";
+  @apply block text-blue-500 font-semibold mb-2 text-lg;
+}
+
+.prose .important-block a {
+  @apply text-blue-500 hover:text-blue-400 underline transition-colors;
+}
+
+.prose .important-block p {
+  @apply text-gray-300 mb-0;
+}
+
+/* Note Block Styling */
+.prose .note-block {
+  @apply my-8 p-6 rounded-lg border-l-4 border-green-500 bg-green-500/10 relative;
+}
+
+.prose .note-block::before {
+  content: "Note";
+  @apply block text-green-500 font-semibold mb-2 text-lg;
+}
+
+.prose .note-block a {
+  @apply text-green-500 hover:text-green-400 underline transition-colors;
+}
+
+.prose .note-block p {
+  @apply text-gray-300 mb-0;
+}
+
+/* Add specific styling for featured images in content */
+.prose img.featured-image {
+  @apply rounded-lg shadow-lg my-8 mx-auto;
+  max-width: 100%;
+  max-height: 500px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Add specific styling for inline images */
+.prose img.inline-image {
+  @apply rounded-lg shadow-sm my-4 mx-2;
+  max-width: 300px;
+  max-height: 300px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
 }
 </style> 
