@@ -276,9 +276,11 @@ onMounted(() => {
               <div class="flex-1 flex flex-col justify-between">
                 <div>
                   <h1 class="text-5xl font-bold text-white mb-12 text-left leading-tight">{{ post?.title }}</h1>
+                </div>
+                <div class="flex flex-col items-left gap-2 mt-auto">
                   <div class="flex items-center gap-2">
                     <span class="text-gray-400">By</span>
-                    <div class="flex items-center gap-2">
+                    <div class="flex  gap-2">
                       <router-link 
                         v-for="(author, index) in post?.author" 
                         :key="author.id || index" 
@@ -289,12 +291,13 @@ onMounted(() => {
                       </router-link>
                     </div>
                   </div>
-                </div>
-                <div class="flex items-center gap-2 mt-auto">
-                  <span class="text-gray-400">Published on</span>
-                  <span class="text-white">
-                    {{ post?._firstPublishedAt ? new Date(post._firstPublishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '' }}
-                  </span>
+                  <div class="flex items-left gap-2">
+
+                    <span class="text-gray-400">Published on</span>
+                    <span class="text-white">
+                      {{ post?._firstPublishedAt ? new Date(post._firstPublishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '' }}
+                    </span>
+                  </div>
                 </div>
               </div>
 
