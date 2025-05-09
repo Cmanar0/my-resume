@@ -73,8 +73,11 @@ const toggleMenu = () => {
           <a href="/#intro" @click="navigateToHome" class="relative w-10 h-10 cursor-pointer">
             <div class="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-0 blur-xl group-hover:opacity-30 transition-opacity"></div>
             <img
-              src="/Avatar-nobg.png"
+              src="/logo-512x512.png"
               alt="Marian Adamus"
+              width="40"
+              height="40"
+              loading="eager"
               class="w-full h-full object-cover rounded-full border-2 border-white dark:border-gray-800 shadow-sm"
             />
           </a>

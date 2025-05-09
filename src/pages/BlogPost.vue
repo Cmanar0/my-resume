@@ -302,8 +302,13 @@ onMounted(() => {
                 <img
                   :src="post.featuredImage.url"
                   :alt="post.featuredImage.alt || post.title"
+                  :width="post.featuredImage.width"
+                  :height="post.featuredImage.height"
                   class="w-full h-full object-cover rounded-lg shadow-lg"
-                  loading="lazy"
+                  loading="eager"
+                  decoding="sync"
+                  fetchpriority="high"
+                  rel="preload"
                 />
               </div>
             </div>
@@ -391,6 +396,8 @@ onMounted(() => {
   width: auto;
   height: auto;
   object-fit: contain;
+  content-visibility: auto;
+  contain: layout size style;
 }
 
 .prose ul {
@@ -594,6 +601,8 @@ onMounted(() => {
   width: auto;
   height: auto;
   object-fit: contain;
+  content-visibility: auto;
+  contain: layout size style;
 }
 
 /* Add specific styling for inline images */
@@ -606,5 +615,20 @@ onMounted(() => {
   object-fit: contain;
   display: inline-block;
   vertical-align: middle;
+  content-visibility: auto;
+  contain: layout size style;
+}
+
+/* Add preload for featured image */
+.prose img[rel="preload"] {
+  @apply rounded-lg shadow-lg my-8 mx-auto;
+  max-width: 100%;
+  max-height: 600px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  content-visibility: auto;
+  contain: layout size style;
+  will-change: transform;
 }
 </style> 

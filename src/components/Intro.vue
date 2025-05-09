@@ -30,7 +30,7 @@ onMounted(() => {
         <div class="relative w-32 h-32 md:w-40 md:h-40 group cursor-pointer" @click="$emit('scrollToSection', 'about')">
           <div class="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-0 blur-xl group-hover:opacity-30 transition-opacity"></div>
           <img
-            src="/Avatar-nobg.png"
+            src="/Avatar-nobg.webp"
             alt="Marian Adamus - Full Stack Developer"
             width="160"
             height="160"
