@@ -70,15 +70,15 @@ useHead({
 const posts = ref<Post[]>([])
 const topics = ref<Topic[]>([
   { id: null, topic: 'All Topics', active: true },
-  { id: 'GsRPQIccTIC7p41OiRNnBg', topic: 'Web Application Development', active: false },
   { id: 'K3LciW3iQp21ucAPj88umw', topic: 'Frontend', active: false },
-  { id: 'JMXWHHPlSjeMbyyWHVFenA', topic: 'Social Media Management', active: false },
-  { id: 'W7Yh9wZEQCuvhWJSb8iUrQ', topic: 'Online Marketing', active: false },
-  { id: 'P8n4pCIlTaiNcyLfyDTjyg', topic: 'SEO', active: false },
   { id: 'OQDlbBVRTn6DuCT7hAxtnw', topic: 'Backend', active: false },
+  { id: 'P8n4pCIlTaiNcyLfyDTjyg', topic: 'SEO', active: false },
   { id: 'data-topic', topic: 'Data', active: false },
   { id: 'database-topic', topic: 'Database', active: false },
-  { id: 'django-topic', topic: 'Django', active: false }
+  { id: 'django-topic', topic: 'Django', active: false },
+  { id: 'devops-topic', topic: 'DevOps', active: false },
+  { id: 'networking-topic', topic: 'Networking', active: false },
+  { id: 'ai-topic', topic: 'AI', active: false }
 ])
 const authors = ref<Author[]>([
   { id: null, name: 'All Authors', active: true }
