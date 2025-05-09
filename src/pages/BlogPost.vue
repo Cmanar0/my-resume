@@ -7,19 +7,31 @@ import type { Post } from '../types/blog'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import MarkdownIt from 'markdown-it'
-import hljs from 'highlight.js'
-import 'highlight.js/styles/github-dark.css'
+import { createHighlighter } from 'shiki'
 
 gsap.registerPlugin(ScrollTrigger)
 
+let highlighter: any = null
+
+// Initialize the highlighter
+createHighlighter({
+  themes: ['github-dark'],
+  langs: ['python', 'bash', 'javascript', 'typescript', 'json', 'sql']
+}).then((h) => {
+  highlighter = h
+})
+
 const md = new MarkdownIt({
-  highlight: function (str, lang) {
-    if (lang && hljs.getLanguage(lang)) {
+  html: true,
+  linkify: true,
+  typographer: true,
+  highlight: function (str: string, lang: string): string {
+    if (lang && highlighter) {
       try {
-        return hljs.highlight(str, { language: lang }).value
+        return highlighter.codeToHtml(str, { lang, themes: { light: 'github-dark', dark: 'github-dark' } })
       } catch (__) {}
     }
-    return '' // use external default escaping
+    return `<pre class="shiki"><code>${md.utils.escapeHtml(str)}</code></pre>`
   }
 })
 const route = useRoute()
@@ -413,5 +425,107 @@ onMounted(() => {
 
 .prose pre code .number {
   @apply text-orange-400;
+}
+
+.prose pre code .class {
+  @apply text-yellow-400;
+}
+
+.prose pre code .operator {
+  @apply text-pink-400;
+}
+
+.prose pre code .variable {
+  @apply text-cyan-400;
+}
+
+.prose pre code .property {
+  @apply text-emerald-400;
+}
+
+.prose pre code .punctuation {
+  @apply text-gray-400;
+}
+
+.prose pre code .built_in {
+  @apply text-amber-400;
+}
+
+.prose pre code .attr {
+  @apply text-lime-400;
+}
+
+.prose pre code .tag {
+  @apply text-rose-400;
+}
+
+.prose pre code .regexp {
+  @apply text-teal-400;
+}
+
+.prose pre code .title {
+  @apply text-violet-400;
+}
+
+.prose pre code .params {
+  @apply text-sky-400;
+}
+
+.prose pre code .doctag {
+  @apply text-indigo-400;
+}
+
+.prose pre code .meta {
+  @apply text-slate-400;
+}
+
+.prose pre code .section {
+  @apply text-fuchsia-400;
+}
+
+.prose pre code .type {
+  @apply text-amber-400;
+}
+
+.prose pre code .symbol {
+  @apply text-cyan-400;
+}
+
+.prose pre code .bullet {
+  @apply text-emerald-400;
+}
+
+.prose pre code .subst {
+  @apply text-orange-400;
+}
+
+.prose pre code .emphasis {
+  @apply text-pink-400 italic;
+}
+
+.prose pre code .strong {
+  @apply text-red-400 font-bold;
+}
+
+.prose pre code .addition {
+  @apply text-green-400 bg-green-900/20;
+}
+
+.prose pre code .deletion {
+  @apply text-red-400 bg-red-900/20;
+}
+
+/* Remove all the previous syntax highlighting styles and replace with: */
+.shiki {
+  @apply my-6 rounded-lg overflow-x-auto;
+}
+
+.shiki code {
+  @apply block p-4;
+}
+
+/* Optional: Add a subtle border */
+.shiki {
+  @apply border border-gray-700;
 }
 </style> 

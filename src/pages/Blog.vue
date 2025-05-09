@@ -72,7 +72,10 @@ const topics = ref<Topic[]>([
   { id: 'JMXWHHPlSjeMbyyWHVFenA', topic: 'Social Media Management', active: false },
   { id: 'W7Yh9wZEQCuvhWJSb8iUrQ', topic: 'Online Marketing', active: false },
   { id: 'P8n4pCIlTaiNcyLfyDTjyg', topic: 'SEO', active: false },
-  { id: 'OQDlbBVRTn6DuCT7hAxtnw', topic: 'Backend', active: false }
+  { id: 'OQDlbBVRTn6DuCT7hAxtnw', topic: 'Backend', active: false },
+  { id: 'data-topic', topic: 'Data', active: false },
+  { id: 'database-topic', topic: 'Database', active: false },
+  { id: 'django-topic', topic: 'Django', active: false }
 ])
 const authors = ref<Author[]>([
   { id: null, name: 'All Authors', active: true }
