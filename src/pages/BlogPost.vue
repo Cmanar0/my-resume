@@ -82,9 +82,7 @@ const fetchPost = async (slug: string) => {
   `
   
   try {
-    console.log('Fetching article with slug:', slug)
     const data = await fetchAPI<{ article: Post | null }>(query)
-    console.log('DatoCMS response:', data)
     
     if (!data.article) {
       console.error('Article not found in DatoCMS:', slug)
@@ -93,7 +91,6 @@ const fetchPost = async (slug: string) => {
     }
     
     post.value = data.article
-    console.log('Successfully loaded article:', data.article)
   } catch (err: unknown) {
     console.error('Error fetching post from DatoCMS:', err)
     if (err instanceof Error) {
@@ -111,7 +108,6 @@ watch(
   () => route.params.slug,
   (newSlug) => {
     if (newSlug) {
-      console.log('Route changed, new slug:', newSlug)
       fetchPost(newSlug as string)
     }
   },

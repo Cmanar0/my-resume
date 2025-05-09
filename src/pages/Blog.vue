@@ -149,8 +149,6 @@ const fetchPosts = async (selectedTopics: (string | null)[] = [], selectedAuthor
       posts.value = data.allArticles
     }
     
-    console.log('Fetched posts:', posts.value)
-
     // Extract unique authors from posts
     const uniqueAuthors = new Map<string, Author>()
     uniqueAuthors.set('all', { id: null, name: 'All Authors', active: true })

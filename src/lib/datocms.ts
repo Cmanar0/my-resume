@@ -1,14 +1,9 @@
 import { GraphQLClient } from 'graphql-request'
 
-// Debug: Log all environment variables
-console.log('All env vars:', import.meta.env)
-
 const DATOCMS_API_TOKEN = import.meta.env.VITE_DATOCMS_API_TOKEN
 const DATOCMS_API_URL = 'https://graphql.datocms.com'
 
 // Debug: Check if token is loaded
-console.log('API Token exists:', !!DATOCMS_API_TOKEN)
-console.log('API Token length:', DATOCMS_API_TOKEN?.length)
 
 if (!DATOCMS_API_TOKEN) {
   console.error('DatoCMS API token is missing. Please check your .env file.')
@@ -22,11 +17,8 @@ export const client = new GraphQLClient(DATOCMS_API_URL, {
 
 export async function fetchAPI<T extends Record<string, any>>(query: string, variables = {}): Promise<T> {
   try {
-    console.log('Making DatoCMS request with query:', query)
-    console.log('Variables:', variables)
     
     const data = await client.request<T>(query, variables)
-    console.log('DatoCMS response:', data)
     
     // Check if the response is empty or null
     if (!data || Object.keys(data).length === 0) {
