@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useHead } from '@vueuse/head'
+import { useRoute } from 'vue-router'
 import { fetchAPI } from '../lib/datocms'
 import type { Post, Topic, Author } from '../types/blog'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
+
+const route = useRoute()
 
 useHead({
   title: 'Blog | Marian Adamus',
@@ -97,7 +100,6 @@ const fetchPosts = async (selectedTopics: (string | null)[] = [], selectedAuthor
     {
       allArticles(
         filter: {
-          ${selectedTopics.length > 0 ? `topics: { anyIn: ${JSON.stringify(selectedTopics)} }` : ''}
           ${selectedAuthors.length > 0 ? `author: { eq: ${JSON.stringify(selectedAuthors[0])} }` : ''}
         }
       ) {
@@ -137,8 +139,17 @@ const fetchPosts = async (selectedTopics: (string | null)[] = [], selectedAuthor
   
   try {
     const data = await fetchAPI<{ allArticles: Post[] }>(query)
-    posts.value = data.allArticles
-    console.log('Fetched posts:', data.allArticles)
+    
+    // Filter posts by selected topics
+    if (selectedTopics.length > 0) {
+      posts.value = data.allArticles.filter(post => 
+        post.topics.some(topic => selectedTopics.includes(topic.topic))
+      )
+    } else {
+      posts.value = data.allArticles
+    }
+    
+    console.log('Fetched posts:', posts.value)
 
     // Extract unique authors from posts
     const uniqueAuthors = new Map<string, Author>()
@@ -186,7 +197,7 @@ const toggleTopic = (topic: Topic) => {
     // Update active topics
     activeTopics.value = topics.value
       .filter(t => t.active && t.id !== null)
-      .map(t => t.id)
+      .map(t => t.topic) // Use topic name instead of ID
     
     // If no topics are selected, activate "All Topics"
     if (activeTopics.value.length === 0) {
@@ -216,7 +227,6 @@ const showButtonsSequentially = () => {
 }
 
 onMounted(() => {
-  fetchPosts()
   showButtonsSequentially()
 
   // Animate title
@@ -256,6 +266,33 @@ onMounted(() => {
     })
   }
 })
+
+watch(
+  () => route.query.topic,
+  (newTopic) => {
+    // If there's a topic in the URL
+    if (newTopic) {
+      // Find the topic in our topics list
+      const topicToActivate = topics.value.find(t => t.topic === newTopic)
+      if (topicToActivate) {
+        // Deactivate all topics first
+        topics.value.forEach(t => t.active = false)
+        // Activate the matching topic
+        topicToActivate.active = true
+        // Update active topics
+        activeTopics.value = [topicToActivate.topic]
+      }
+    } else {
+      // If no topic in URL, activate "All Topics"
+      topics.value.forEach(t => t.active = t.id === null)
+      activeTopics.value = []
+    }
+    
+    // Fetch posts with current filters
+    fetchPosts(activeTopics.value, activeAuthors.value)
+  },
+  { immediate: true }
+)
 </script>
 
 <template>

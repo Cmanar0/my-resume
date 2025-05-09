@@ -326,13 +326,14 @@ onMounted(() => {
           <div class="mt-16 pt-8 border-t border-gray-700 text-center">
             <h3 class="text-lg font-semibold text-white mb-4">Topics:</h3>
             <div class="flex flex-wrap justify-center gap-2">
-              <span
+              <router-link
                 v-for="topic in post?.topics"
                 :key="topic.topic"
-                class="px-4 py-2 rounded-full text-sm font-medium bg-gray-800 text-gray-300 border border-gray-700"
+                :to="{ path: '/blog', query: { topic: topic.topic }}"
+                class="px-4 py-2 rounded-full text-sm font-medium bg-gray-800 text-gray-300 border border-gray-700 hover:bg-gray-700 transition-colors"
               >
                 {{ topic.topic }}
-              </span>
+              </router-link>
             </div>
           </div>
         </div>
