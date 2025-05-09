@@ -96,7 +96,6 @@
                 <div class="flex flex-col items-center">
                   <img class="w-12 h-12 mb-2" src="/dj.svg" alt="Django logo" />
                   <h4 class="text-xl font-bold mb-2">Django</h4>
-                  <p class="text-gray-400 text-sm">Web Framework</p>
                 </div>
                 <div class="flex flex-col items-center">
                   <img class="w-12 h-12 mb-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="PostgreSQL logo" />

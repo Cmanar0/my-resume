@@ -9,6 +9,7 @@ import Projects from './components/Projects.vue'
 import Skills from './components/Skills.vue'
 import Contact from './components/Contact.vue'
 import SectionDivider from './components/SectionDivider.vue'
+import Footer from './components/Footer.vue'
 
 const route = useRoute()
 const activeSection = ref('intro')
@@ -61,6 +62,7 @@ onMounted(() => {
       <SectionDivider />
       <Contact id="contact" />
     </main>
+    <Footer />
   </div>
 </template>
 

@@ -2,17 +2,30 @@
 const contacts = [
   {
     name: 'LinkedIn',
-    handle: '@yourlinkedin',
-    url: 'https://linkedin.com/in/yourlinkedin',
+    handle: '@m-adamus',
+    url: 'https://www.linkedin.com/in/m-adamus/',
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg',
-  },
-  {
-    name: 'Email',
-    handle: 'your@email.com',
-    url: 'mailto:your@email.com',
-    icon: 'email', // fallback
   }
 ]
+
+// Split email into parts to make it harder to scrape
+const emailParts = {
+  part1: 'adamus',
+  part2: 'marian',
+  part3: '@',
+  part4: 'email',
+  part5: '.',
+  part6: 'cz'
+}
+
+const getEmail = () => {
+  return `${emailParts.part1}.${emailParts.part2}${emailParts.part3}${emailParts.part4}${emailParts.part5}${emailParts.part6}`
+}
+
+const handleEmailClick = () => {
+  const mailtoLink = `mailto:${getEmail()}`
+  window.open(mailtoLink, '_self')
+}
 </script>
 
 <template>
@@ -20,7 +33,7 @@ const contacts = [
     <!-- Gradient Background -->
     <div class="absolute inset-0 bg-gradient-to-b from-indigo-500 via-purple-500 to-black opacity-20 -z-10"></div>
 
-    <!-- TITLE (kept as you had it originally) -->
+    <!-- TITLE -->
     <h2 class="text-4xl font-bold text-center mb-32 text-white relative">
       Contact
       <div
@@ -35,18 +48,34 @@ const contacts = [
         :key="idx"
         :href="contact.url"
         target="_blank"
+        rel="noopener noreferrer"
         class="flex items-center gap-4 p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition group"
       >
         <!-- ICON -->
         <div class="flex-shrink-0">
           <img
-            v-if="contact.icon !== 'email'"
             :src="contact.icon"
-            alt=""
+            :alt="`${contact.name} icon`"
             class="w-10 h-10"
+            loading="lazy"
           />
+        </div>
+
+        <!-- TEXT -->
+        <div class="flex flex-col items-start">
+          <span class="text-sm uppercase text-gray-600 dark:text-gray-300">{{ contact.name }}</span>
+          <span class="font-semibold text-lg text-gray-900 dark:text-white">{{ contact.handle }}</span>
+        </div>
+      </a>
+
+      <!-- Email Contact -->
+      <div
+        class="flex items-center gap-4 p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition group cursor-pointer"
+        @click="handleEmailClick"
+      >
+        <!-- ICON -->
+        <div class="flex-shrink-0">
           <svg
-            v-else
             class="w-10 h-10 text-gray-900 dark:text-white"
             fill="none"
             stroke="currentColor"
@@ -59,75 +88,41 @@ const contacts = [
 
         <!-- TEXT -->
         <div class="flex flex-col items-start">
-          <span class="text-sm uppercase text-gray-600 dark:text-gray-300">{{ contact.name }}</span>
-          <span class="font-semibold text-lg text-gray-900 dark:text-white">{{ contact.handle }}</span>
+          <span class="text-sm uppercase text-gray-600 dark:text-gray-300">Email</span>
+          <span 
+            class="font-semibold text-lg text-gray-900 dark:text-white select-none inline-flex items-center"
+            style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;"
+          >
+            <span class="opacity-0 absolute">{{ emailParts.part1 }}</span>
+            <span>{{ emailParts.part1 }}</span>
+            <span class="opacity-0 absolute">{{ emailParts.part2 }}</span>
+            <span>.{{ emailParts.part2 }}</span>
+            <span class="opacity-0 absolute">{{ emailParts.part3 }}</span>
+            <span>{{ emailParts.part3 }}</span>
+            <span class="opacity-0 absolute">{{ emailParts.part4 }}</span>
+            <span>{{ emailParts.part4 }}</span>
+            <span class="opacity-0 absolute">{{ emailParts.part5 }}</span>
+            <span>{{ emailParts.part5 }}</span>
+            <span class="opacity-0 absolute">{{ emailParts.part6 }}</span>
+            <span>{{ emailParts.part6 }}</span>
+          </span>
         </div>
-      </a>
-    </div>
-
-
-    <!-- SOCIAL ICONS ROW -->
-    <div class="flex justify-center items-center gap-6 mb-16 mt-32">
-      <a 
-        href="https://linkedin.com/in/yourlinkedin" 
-        target="_blank" 
-        class="flex items-center justify-center w-12 h-12 bg-[#0A66C2] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm"
-        aria-label="Visit LinkedIn profile"
-      >
-        <img 
-          class="w-7 h-7 rounded" 
-          src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg" 
-          alt="LinkedIn Profile"
-          width="28"
-          height="28"
-          loading="lazy"
-        />
-      </a>
-      <a 
-        href="https://twitter.com/yourtwitter" 
-        target="_blank" 
-        class="flex items-center justify-center w-12 h-12 bg-[#1DA1F2] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm"
-        aria-label="Visit Twitter profile"
-      >
-        <img 
-          class="w-7 h-7 rounded" 
-          src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/twitter/twitter-original.svg" 
-          alt="Twitter Profile"
-          width="28"
-          height="28"
-          loading="lazy"
-        />
-      </a>
-      <a 
-        href="https://github.com/yourgithub" 
-        target="_blank" 
-        class="flex items-center justify-center w-12 h-12 bg-[#181717] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm"
-        aria-label="Visit GitHub profile"
-      >
-        <img 
-          class="w-7 h-7 rounded" 
-          src="/github.webp" 
-          alt="GitHub Profile"
-          width="28"
-          height="28"
-          loading="lazy"
-        />
-      </a>
-      <a 
-        href="mailto:your@email.com" 
-        class="flex items-center justify-center w-12 h-12 bg-[#EA4335] rounded-full hover:scale-110 transition-transform duration-300 shadow-sm"
-        aria-label="Send email to your@email.com"
-      >
-        <svg 
-          class="w-7 h-7 text-white" 
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      </a>
+      </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+/* Prevent text selection */
+.select-none {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Add a subtle hover effect to show it's clickable */
+.cursor-pointer {
+  cursor: pointer;
+}
+</style>
