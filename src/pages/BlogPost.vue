@@ -267,16 +267,16 @@ onMounted(() => {
         <div class="relative z-10 w-full px-4 sm:px-6 lg:px-32 pt-32">
           <div class="max-w-[2000px] mx-auto">
             <!-- Header -->
-            <div class="flex gap-8 mt-16">
+            <div class="flex flex-col lg:flex-row gap-8 lg:mt-16">
               <!-- Left side: Title, Author, Date -->
-              <div class="flex-1 flex flex-col justify-between">
+              <div class="flex-1 flex flex-col justify-between order-2 lg:order-1">
                 <div>
-                  <h1 class="text-5xl font-bold text-white mb-12 text-left leading-tight">{{ post?.title }}</h1>
+                  <h1 class="text-4xl lg:text-5xl font-bold text-white mb-8 lg:mb-12 text-left leading-tight">{{ post?.title }}</h1>
                 </div>
                 <div class="flex flex-col items-left gap-2 mt-auto">
                   <div class="flex items-center gap-2">
                     <span class="text-gray-400">By</span>
-                    <div class="flex  gap-2">
+                    <div class="flex gap-2">
                       <router-link 
                         v-for="(author, index) in post?.author" 
                         :key="author.id || index" 
@@ -288,7 +288,6 @@ onMounted(() => {
                     </div>
                   </div>
                   <div class="flex items-left gap-2">
-
                     <span class="text-gray-400">Published on</span>
                     <span class="text-white">
                       {{ post?._firstPublishedAt ? new Date(post._firstPublishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '' }}
@@ -298,7 +297,7 @@ onMounted(() => {
               </div>
 
               <!-- Right side: Featured Image -->
-              <div v-if="post?.featuredImage" class="flex-1 relative aspect-[16/9] max-w-2xl mx-auto">
+              <div v-if="post?.featuredImage" class="flex-1 relative aspect-[16/11] max-w-2xl mx-auto order-1 lg:order-2 mb-8 lg:mb-0">
                 <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 z-10"></div>
                 <img
                   :src="post.featuredImage.url"
