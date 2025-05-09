@@ -7,10 +7,21 @@ import type { Post } from '../types/blog'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import MarkdownIt from 'markdown-it'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/github-dark.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const md = new MarkdownIt()
+const md = new MarkdownIt({
+  highlight: function (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return hljs.highlight(str, { language: lang }).value
+      } catch (__) {}
+    }
+    return '' // use external default escaping
+  }
+})
 const route = useRoute()
 const post = ref<Post | null>(null)
 const contentRef = ref<HTMLElement | null>(null)
@@ -350,15 +361,21 @@ onMounted(() => {
 }
 
 .prose code {
-  @apply bg-gray-800 text-indigo-400 px-2 py-1 rounded;
+  @apply bg-gray-800 text-indigo-400 px-2 py-1 rounded text-sm;
 }
 
 .prose pre {
-  @apply bg-gray-800 p-4 rounded-lg overflow-x-auto my-6;
+  @apply bg-gray-800 p-4 rounded-lg overflow-x-auto my-6 border border-gray-700;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0 text-sm font-mono;
 }
 
 .prose img {
-  @apply rounded-lg shadow-lg my-8;
+  @apply rounded-lg shadow-lg my-8 max-w-full h-auto mx-auto;
+  max-height: 600px;
+  object-fit: contain;
 }
 
 .prose ul {
@@ -375,5 +392,26 @@ onMounted(() => {
 
 .prose p {
   @apply mb-6 text-lg leading-relaxed;
+}
+
+/* Add syntax highlighting colors */
+.prose pre code .keyword {
+  @apply text-purple-400;
+}
+
+.prose pre code .string {
+  @apply text-green-400;
+}
+
+.prose pre code .comment {
+  @apply text-gray-500;
+}
+
+.prose pre code .function {
+  @apply text-blue-400;
+}
+
+.prose pre code .number {
+  @apply text-orange-400;
 }
 </style> 
