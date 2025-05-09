@@ -75,9 +75,8 @@
           </div>
         </div>
 
-        <p class="text-gray-600 dark:text-gray-300 leading-relaxed" itemprop="description">
-          News Agency Website with admin dashboard. Made with React.js, Java
-          Spring and PostgreSQL.
+        <p class="text-gray-600 dark:text-gray-300 w-3/4 leading-relaxed" itemprop="description">
+          An interactive drag-and-drop table for managing and visualizing shifts for employees.
         </p>
 
         <nav class="flex gap-4 mt-4">
