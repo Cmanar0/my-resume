@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, computed, watchEffect, watch } from 'vue';
+import { ref, onMounted, computed, watchEffect, watch, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
 import { useHead } from '@vueuse/head';
 import { fetchAPI } from '../lib/datocms';
@@ -28,10 +28,10 @@ const md = new MarkdownIt({
   highlight: function (str: string, lang: string): string {
     if (lang && highlighter) {
       try {
-        return highlighter.codeToHtml(str, {
+        return `<pre class="shiki"><code class="language-${lang}">${highlighter.codeToHtml(str, {
           lang,
           themes: { light: 'github-dark', dark: 'github-dark' },
-        });
+        })}</code></pre>`;
       } catch (__) {}
     }
     return `<pre class="shiki"><code>${md.utils.escapeHtml(str)}</code></pre>`;
@@ -239,6 +239,46 @@ watchEffect(() => {
   }
 });
 
+const adjustTableWidths = () => {
+  nextTick(() => {
+    const tables = document.querySelectorAll('.prose table')
+    tables.forEach(table => {
+      const rows = table.querySelectorAll('tr')
+      const colCount = rows[0]?.querySelectorAll('th, td').length || 0
+      const colWidths = new Array(colCount).fill(0)
+
+      // Calculate max content length for each column
+      rows.forEach(row => {
+        const cells = row.querySelectorAll('th, td')
+        cells.forEach((cell, index) => {
+          // Get text content length, considering line breaks
+          const content = cell.textContent || ''
+          const lines = content.split('\n')
+          const maxLineLength = Math.max(...lines.map(line => line.length))
+          colWidths[index] = Math.max(colWidths[index], maxLineLength)
+        })
+      })
+
+      // Calculate total width
+      const totalWidth = colWidths.reduce((sum, width) => sum + width, 0)
+
+      // Set width for each column
+      rows.forEach(row => {
+        const cells = row.querySelectorAll('th, td')
+        cells.forEach((cell, index) => {
+          const percentage = (colWidths[index] / totalWidth) * 100
+          ;(cell as HTMLElement).style.width = `${percentage}%`
+        })
+      })
+    })
+  })
+}
+
+// Watch for content changes to adjust table widths
+watch(() => post.value?.content, () => {
+  adjustTableWidths()
+})
+
 onMounted(() => {
   const slug = route.params.slug as string;
   fetchPost(slug);
@@ -252,21 +292,25 @@ onMounted(() => {
       ease: 'power2.out',
     });
   }
+
+  // Initial table width adjustment
+  adjustTableWidths()
 });
 </script>
 
 <template>
   <div class="min-h-screen w-screen bg-black text-white">
     <!-- Loading State -->
-    <div v-if="isLoading" class="flex items-center justify-center min-h-screen">
-      <div class="text-gray-400">Loading...</div>
+    <div v-if="isLoading" class="flex flex-col items-center justify-center min-h-screen">
+      <div class="relative w-16 h-16 mb-4">
+        <div class="absolute inset-0 border-4 border-indigo-500/20 rounded-full"></div>
+        <div class="absolute inset-0 border-4 border-transparent border-t-indigo-500 rounded-full animate-spin"></div>
+      </div>
+      <div class="text-gray-400 text-lg">Loading article...</div>
     </div>
 
     <!-- Error State -->
-    <div
-      v-else-if="error"
-      class="flex items-center justify-center min-h-screen"
-    >
+    <div v-else-if="error" class="flex items-center justify-center min-h-screen">
       <div class="text-red-400">{{ error }}</div>
     </div>
 
@@ -701,5 +745,395 @@ onMounted(() => {
   content-visibility: auto;
   contain: layout size style;
   will-change: transform;
+}
+
+.prose table {
+  @apply w-full my-8 border-collapse table-fixed;
+}
+
+.prose thead {
+  @apply bg-gray-800/50 w-full;
+}
+
+.prose th {
+  @apply px-6 py-4 text-left text-sm font-semibold text-white border-b border-gray-700;
+}
+
+.prose td {
+  @apply px-6 py-4 text-sm text-gray-300 border-b border-gray-700;
+}
+
+.prose tr {
+  @apply w-full table-row;
+}
+
+.prose tbody {
+  @apply w-full;
+}
+
+.prose tr:hover {
+  @apply bg-gray-800/30;
+}
+
+.prose tbody tr:last-child td {
+  @apply border-b-0;
+}
+
+/* Add responsive table wrapper */
+.prose table {
+  @apply block w-full overflow-x-auto;
+}
+
+/* Style table header cells */
+.prose th:first-child {
+  @apply rounded-tl-lg;
+}
+
+.prose th:last-child {
+  @apply rounded-tr-lg;
+}
+
+/* Add subtle background to alternate rows */
+.prose tbody tr:nth-child(even) {
+  @apply bg-gray-800/20;
+}
+
+/* Style code blocks within table cells */
+.prose td code {
+  @apply bg-gray-800 text-indigo-400 px-2 py-1 rounded text-sm font-mono;
+}
+
+/* Add a subtle border to the entire table */
+.prose table {
+  @apply border border-gray-700 rounded-lg;
+}
+
+/* Ensure table cells don't wrap unnecessarily */
+.prose td, .prose th {
+  @apply whitespace-normal break-words;
+}
+
+/* Ensure table layout is fixed and full width */
+.prose table {
+  @apply table-fixed w-full;
+}
+
+/* Ensure cells take up their calculated width */
+.prose th, .prose td {
+  @apply overflow-hidden;
+}
+
+/* Add loading animation keyframes */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* HTTP Code Block Styling */
+.prose pre[class*="language-http"],
+.prose pre[class*="language-https"] {
+  @apply bg-gray-800 border border-gray-700 rounded-lg overflow-x-auto my-6;
+}
+
+.prose pre[class*="language-http"] code,
+.prose pre[class*="language-https"] code {
+  @apply text-sm font-mono block p-4;
+}
+
+/* HTTP Header Styling */
+.prose pre[class*="language-http"] .header-name,
+.prose pre[class*="language-https"] .header-name {
+  @apply text-blue-400 font-semibold;
+}
+
+/* HTTP Header Value Styling */
+.prose pre[class*="language-http"] .header-value,
+.prose pre[class*="language-https"] .header-value {
+  @apply text-green-400;
+}
+
+/* HTTP Cookie Parameters Styling */
+.prose pre[class*="language-http"] .cookie-param,
+.prose pre[class*="language-https"] .cookie-param {
+  @apply text-yellow-400;
+}
+
+/* HTTP Domain Styling */
+.prose pre[class*="language-http"] .domain,
+.prose pre[class*="language-https"] .domain {
+  @apply text-purple-400;
+}
+
+/* HTML Code Block Styling */
+.prose pre[class*="language-html"] {
+  @apply bg-gray-800 border border-gray-700 rounded-lg overflow-x-auto my-6;
+}
+
+.prose pre[class*="language-html"] code {
+  @apply text-sm font-mono block p-4;
+}
+
+/* HTML Tag Styling */
+.prose pre[class*="language-html"] .tag {
+  @apply text-pink-400;
+}
+
+/* HTML Attribute Name Styling */
+.prose pre[class*="language-html"] .attr-name {
+  @apply text-yellow-400;
+}
+
+/* HTML Attribute Value Styling */
+.prose pre[class*="language-html"] .attr-value {
+  @apply text-green-400;
+}
+
+/* HTML Script Tag Content Styling */
+.prose pre[class*="language-html"] .script-content {
+  @apply text-gray-300;
+}
+
+/* HTML Form Action Styling */
+.prose pre[class*="language-html"] .form-action {
+  @apply text-blue-400;
+}
+
+/* HTML Input Type Styling */
+.prose pre[class*="language-html"] .input-type {
+  @apply text-purple-400;
+}
+
+/* HTML Input Name/Value Styling */
+.prose pre[class*="language-html"] .input-name,
+.prose pre[class*="language-html"] .input-value {
+  @apply text-green-400;
+}
+
+/* Common Code Block Styling */
+.prose pre {
+  @apply my-6;
+}
+
+.prose pre code {
+  @apply block;
+}
+
+/* Code Block Title */
+.prose pre::before {
+  content: attr(data-language);
+  @apply block text-xs text-gray-500 mb-2 font-mono;
+}
+
+/* Ensure proper spacing between code blocks */
+.prose pre + pre {
+  @apply mt-8;
+}
+
+/* Ensure proper spacing between code blocks and other content */
+.prose p + pre,
+.prose h1 + pre,
+.prose h2 + pre,
+.prose h3 + pre,
+.prose h4 + pre,
+.prose h5 + pre,
+.prose h6 + pre {
+  @apply mt-8;
+}
+
+/* Add loading animation keyframes */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* HTTP Code Block Styling */
+.prose pre[class*="language-http"],
+.prose pre[class*="language-https"] {
+  @apply bg-gray-800 border border-gray-700 rounded-lg overflow-x-auto my-6;
+}
+
+.prose pre[class*="language-http"] code,
+.prose pre[class*="language-https"] code {
+  @apply text-sm font-mono block p-4;
+}
+
+/* HTTP Method Styling */
+.prose pre[class*="language-http"] .method,
+.prose pre[class*="language-https"] .method {
+  @apply text-purple-400 font-bold;
+}
+
+/* HTTP Status Code Styling */
+.prose pre[class*="language-http"] .status,
+.prose pre[class*="language-https"] .status {
+  @apply text-green-400 font-bold;
+}
+
+/* HTTP Headers Styling */
+.prose pre[class*="language-http"] .header,
+.prose pre[class*="language-https"] .header {
+  @apply text-blue-400;
+}
+
+/* HTTP URL Styling */
+.prose pre[class*="language-http"] .url,
+.prose pre[class*="language-https"] .url {
+  @apply text-yellow-400;
+}
+
+/* HTML Code Block Styling */
+.prose pre[class*="language-html"] {
+  @apply bg-gray-800 border border-gray-700 rounded-lg overflow-x-auto my-6;
+}
+
+.prose pre[class*="language-html"] code {
+  @apply text-sm font-mono;
+}
+
+/* HTML Tag Styling */
+.prose pre[class*="language-html"] .tag {
+  @apply text-pink-400;
+}
+
+/* HTML Attribute Styling */
+.prose pre[class*="language-html"] .attr {
+  @apply text-yellow-400;
+}
+
+/* HTML String Styling */
+.prose pre[class*="language-html"] .string {
+  @apply text-green-400;
+}
+
+/* HTML Comment Styling */
+.prose pre[class*="language-html"] .comment {
+  @apply text-gray-500 italic;
+}
+
+/* HTML Doctype Styling */
+.prose pre[class*="language-html"] .doctype {
+  @apply text-blue-400;
+}
+
+/* Line Numbers */
+.prose pre .line-number {
+  @apply text-gray-500 mr-4 select-none;
+}
+
+/* Update the styling to target code elements */
+.prose pre.shiki {
+  @apply bg-gray-800 border border-gray-700 rounded-lg overflow-x-auto my-6;
+}
+
+.prose pre.shiki code {
+  @apply text-sm font-mono block p-4;
+}
+
+/* HTTP Code Block Styling */
+.prose pre.shiki code[class*="language-http"],
+.prose pre.shiki code[class*="language-https"] {
+  @apply block;
+}
+
+/* HTTP Header Styling */
+.prose pre.shiki code[class*="language-http"] .header-name,
+.prose pre.shiki code[class*="language-https"] .header-name {
+  @apply text-blue-400 font-semibold;
+}
+
+/* HTTP Header Value Styling */
+.prose pre.shiki code[class*="language-http"] .header-value,
+.prose pre.shiki code[class*="language-https"] .header-value {
+  @apply text-green-400;
+}
+
+/* HTTP Cookie Parameters Styling */
+.prose pre.shiki code[class*="language-http"] .cookie-param,
+.prose pre.shiki code[class*="language-https"] .cookie-param {
+  @apply text-yellow-400;
+}
+
+/* HTTP Domain Styling */
+.prose pre.shiki code[class*="language-http"] .domain,
+.prose pre.shiki code[class*="language-https"] .domain {
+  @apply text-purple-400;
+}
+
+/* HTML Code Block Styling */
+.prose pre.shiki code[class*="language-html"] {
+  @apply block;
+}
+
+/* HTML Tag Styling */
+.prose pre.shiki code[class*="language-html"] .tag {
+  @apply text-pink-400;
+}
+
+/* HTML Attribute Name Styling */
+.prose pre.shiki code[class*="language-html"] .attr-name {
+  @apply text-yellow-400;
+}
+
+/* HTML Attribute Value Styling */
+.prose pre.shiki code[class*="language-html"] .attr-value {
+  @apply text-green-400;
+}
+
+/* HTML Script Tag Content Styling */
+.prose pre.shiki code[class*="language-html"] .script-content {
+  @apply text-gray-300;
+}
+
+/* HTML Form Action Styling */
+.prose pre.shiki code[class*="language-html"] .form-action {
+  @apply text-blue-400;
+}
+
+/* HTML Input Type Styling */
+.prose pre.shiki code[class*="language-html"] .input-type {
+  @apply text-purple-400;
+}
+
+/* HTML Input Name/Value Styling */
+.prose pre.shiki code[class*="language-html"] .input-name,
+.prose pre.shiki code[class*="language-html"] .input-value {
+  @apply text-green-400;
+}
+
+/* Common Code Block Styling */
+.prose pre.shiki {
+  @apply my-6;
+}
+
+/* Code Block Title */
+.prose pre.shiki::before {
+  content: attr(data-language);
+  @apply block text-xs text-gray-500 mb-2 font-mono;
+}
+
+/* Ensure proper spacing between code blocks */
+.prose pre.shiki + pre.shiki {
+  @apply mt-8;
+}
+
+/* Ensure proper spacing between code blocks and other content */
+.prose p + pre.shiki,
+.prose h1 + pre.shiki,
+.prose h2 + pre.shiki,
+.prose h3 + pre.shiki,
+.prose h4 + pre.shiki,
+.prose h5 + pre.shiki,
+.prose h6 + pre.shiki {
+  @apply mt-8;
 }
 </style>

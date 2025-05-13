@@ -87,6 +87,7 @@ const authors = ref<Author[]>([
 const activeTopics = ref<(string | null)[]>([])
 const activeAuthors = ref<(string | null)[]>([])
 const rerender = ref(0)
+const isLoading = ref(true)
 
 const sectionRef = ref<HTMLElement | null>(null)
 const titleRef = ref<HTMLElement | null>(null)
@@ -97,6 +98,7 @@ const postsRef = ref<HTMLElement | null>(null)
 const visibleButtons = ref<number[]>([])
 
 const fetchPosts = async (selectedTopics: (string | null)[] = [], selectedAuthors: (string | null)[] = []) => {
+  isLoading.value = true
   const query = `
     {
       allArticles(
@@ -171,6 +173,8 @@ const fetchPosts = async (selectedTopics: (string | null)[] = [], selectedAuthor
     authors.value = Array.from(uniqueAuthors.values())
   } catch (error) {
     console.error('Error fetching posts:', error)
+  } finally {
+    isLoading.value = false
   }
 }
 
@@ -349,8 +353,17 @@ watch(
 
     <!-- Blog Content -->
     <div class="w-full px-4 sm:px-6 lg:px-32 py-16">
+      <!-- Loading State -->
+      <div v-if="isLoading" class="flex flex-col items-center justify-center min-h-[50vh]">
+        <div class="relative w-16 h-16 mb-4">
+          <div class="absolute inset-0 border-4 border-indigo-500/20 rounded-full"></div>
+          <div class="absolute inset-0 border-4 border-transparent border-t-indigo-500 rounded-full animate-spin"></div>
+        </div>
+        <div class="text-gray-400 text-lg">Loading articles...</div>
+      </div>
+
       <!-- Posts Grid -->
-      <div ref="postsRef" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-[2000px] mx-auto">
+      <div v-else ref="postsRef" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-[2000px] mx-auto">
         <article v-for="post in posts" :key="post.id" 
           class="group relative bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:bg-black/50 transition-all duration-300 cursor-pointer"
           @click="() => $router.push(`/blog/${post.slug}`)">
@@ -407,3 +420,16 @@ watch(
     </div>
   </div>
 </template>
+
+<style>
+/* Add loading animation keyframes */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+</style>
