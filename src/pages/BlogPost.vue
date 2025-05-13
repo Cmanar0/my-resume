@@ -271,7 +271,19 @@ onMounted(() => {
               <!-- Left side: Title, Author, Date -->
               <div class="flex-1 flex flex-col justify-between order-2 lg:order-1">
                 <div>
-                  <h1 class="text-4xl lg:text-5xl font-bold text-white mb-8 lg:mb-12 text-left leading-tight">{{ post?.title }}</h1>
+                  <h1 class="text-4xl lg:text-5xl font-bold text-white mb-4 lg:mb-6 text-left leading-tight">{{ post?.title }}</h1>
+                  
+                  <!-- Topic Tags -->
+                  <div class="flex flex-wrap gap-2 mb-8">
+                    <router-link
+                      v-for="topic in post?.topics"
+                      :key="topic.topic"
+                      :to="{ path: '/blog', query: { topic: topic.topic }}"
+                      class="px-3 py-1 text-sm font-medium bg-gray-800/50 text-gray-300 border border-gray-700 rounded-full hover:bg-gray-700 transition-colors"
+                    >
+                      {{ topic.topic }}
+                    </router-link>
+                  </div>
                 </div>
                 <div class="flex flex-col items-left gap-2 mt-auto">
                   <div class="flex items-center gap-2">
