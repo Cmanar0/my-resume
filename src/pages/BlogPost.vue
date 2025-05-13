@@ -401,7 +401,20 @@ onMounted(() => {
 }
 
 .prose ul {
-  @apply list-disc list-inside my-6;
+  @apply list-none my-6;
+}
+
+.prose ul li {
+  @apply relative pl-6 mb-4 text-gray-300;
+}
+
+.prose ul li::before {
+  content: "•";
+  @apply absolute left-0 text-indigo-400;
+}
+
+.prose ul li strong {
+  @apply text-white font-semibold;
 }
 
 .prose ol {

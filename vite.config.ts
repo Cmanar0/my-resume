@@ -7,6 +7,13 @@ export default defineConfig(({ mode }) => {
   // Load env file based on `mode` in the current directory.
   const env = loadEnv(mode, process.cwd(), '')
   
+  // Define which environment variables to expose
+  const envToExpose = {
+    VITE_DATOCMS_API_TOKEN: env.VITE_DATOCMS_API_TOKEN,
+    VITE_DATOCMS_API_URL: env.VITE_DATOCMS_API_URL,
+    // Add other environment variables your app needs here
+  }
+  
   return {
     plugins: [vue()],
     base: '/',
@@ -33,9 +40,9 @@ export default defineConfig(({ mode }) => {
         }
       }
     },
-    // Expose env variables to your app
+    // Only expose specific environment variables
     define: {
-      'process.env': env
+      'process.env': envToExpose
     }
   }
 })
