@@ -16,7 +16,7 @@ let highlighter: any = null;
 // Initialize the highlighter
 createHighlighter({
   themes: ['github-dark'],
-  langs: ['python', 'bash', 'javascript', 'typescript', 'json', 'sql'],
+  langs: ['python', 'bash', 'javascript', 'typescript', 'json', 'sql', 'http', 'html'],
 }).then((h) => {
   highlighter = h;
 });
@@ -28,10 +28,10 @@ const md = new MarkdownIt({
   highlight: function (str: string, lang: string): string {
     if (lang && highlighter) {
       try {
-        return `<pre class="shiki"><code class="language-${lang}">${highlighter.codeToHtml(str, {
+        return highlighter.codeToHtml(str, {
           lang,
           themes: { light: 'github-dark', dark: 'github-dark' },
-        })}</code></pre>`;
+        });
       } catch (__) {}
     }
     return `<pre class="shiki"><code>${md.utils.escapeHtml(str)}</code></pre>`;
@@ -654,6 +654,17 @@ onMounted(() => {
   @apply border border-gray-700;
 }
 
+/* Add loading animation keyframes */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
 /* Disclaimer Block Styling */
 .prose .disclaimer-block {
   @apply my-8 p-6 rounded-lg border-l-4 border-yellow-500 bg-yellow-500/10 relative;
@@ -821,17 +832,6 @@ onMounted(() => {
 /* Ensure cells take up their calculated width */
 .prose th, .prose td {
   @apply overflow-hidden;
-}
-
-/* Add loading animation keyframes */
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin {
-  animation: spin 1s linear infinite;
 }
 
 /* HTTP Code Block Styling */
