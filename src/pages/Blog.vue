@@ -78,7 +78,8 @@ const topics = ref<Topic[]>([
   { id: 'django-topic', topic: 'Django', active: false },
   { id: 'devops-topic', topic: 'DevOps', active: false },
   { id: 'networking-topic', topic: 'Networking', active: false },
-  { id: 'ai-topic', topic: 'AI', active: false }
+  { id: 'ai-topic', topic: 'AI', active: false },
+  { id: 'security-topic', topic: 'Security', active: false }
 ])
 const authors = ref<Author[]>([
   { id: null, name: 'All Authors', active: true }
