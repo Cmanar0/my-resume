@@ -65,10 +65,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <section ref="sectionRef" class="py-20 w-screen">
-    <div class="w-screen">
-      <div class="container mx-auto px-4">
-        <div class="max-w-6xl mx-auto">
+  <section ref="sectionRef" class="py-20 w-full">
+    <div class="w-full">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
           <h2 class="text-4xl font-bold text-center mb-32 text-gray-900 dark:text-white relative">
             About Me
             <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>

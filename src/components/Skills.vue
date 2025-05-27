@@ -1,8 +1,8 @@
 <template>
-  <section class="py-24 w-screen">
-    <div class="w-screen">
-      <div class="container mx-auto px-4">
-        <div class="max-w-6xl mx-auto">
+  <section class="py-24 w-full">
+    <div class="w-full">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
           <h2
             class="text-4xl font-bold text-center mb-32 text-gray-900 dark:text-white relative"
           >

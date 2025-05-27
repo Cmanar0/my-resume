@@ -44,12 +44,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-black text-white">
+  <div class="min-h-screen bg-black text-white overflow-x-hidden">
     <Navbar :active-section="activeSection" />
     
     <router-view v-if="route.path !== '/'"></router-view>
     
-    <main v-else class="relative">
+    <main v-else class="relative w-full">
       <Intro id="intro" @scroll-to-section="scrollToSection" />
       <SectionDivider />
       <About id="about" />

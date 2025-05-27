@@ -19,15 +19,15 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
+  <section class="min-h-screen flex items-center justify-center relative overflow-hidden w-full">
     <!-- Background gradient -->
     <div class="absolute inset-0 bg-gradient-to-b from-indigo-500 via-purple-500 to-black opacity-20"></div>
     
     <!-- Content -->
-    <div class="relative z-10 text-center px-4">
+    <div class="relative z-10 text-center w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Avatar -->
-      <div class="mb-8 flex justify-center">
-        <div class="relative w-32 h-32 md:w-40 md:h-40 group cursor-pointer" @click="$emit('scrollToSection', 'about')">
+      <div class="mb-6 sm:mb-8 md:mb-12 flex justify-center">
+        <div class="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 group cursor-pointer" @click="$emit('scrollToSection', 'about')">
           <div class="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-0 blur-xl group-hover:opacity-30 transition-opacity"></div>
           <img
             src="/Avatar-nobg.webp"
@@ -39,25 +39,33 @@ onMounted(() => {
           />
         </div>
       </div>
-      <h1 class="text-5xl md:text-7xl font-bold text-white mb-4">
+
+      <!-- Name -->
+      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-3 sm:mb-4">
         Marian Adamus
       </h1>
-      <h2 class="text-2xl md:text-3xl text-gray-300 mb-8">
-        <span ref="typedElement"></span>
+
+      <!-- Title -->
+      <h2 class="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-6 sm:mb-8">
+        <span ref="typedElement" class="inline-block"></span>
       </h2>
-      <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
+
+      <!-- Description -->
+      <p class="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8 sm:mb-10 md:mb-12">
         I build exceptional digital experiences with modern technologies.
       </p>
-      <div class="flex justify-center gap-4">
+
+      <!-- Buttons -->
+      <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
         <a
           href="#projects"
-          class="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+          class="px-4 sm:px-6 py-2 sm:py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors text-sm sm:text-base"
         >
           View My Work
         </a>
         <a
           href="#contact"
-          class="px-6 py-3 border border-indigo-600 text-indigo-400 rounded-lg hover:bg-indigo-900/20 transition-colors"
+          class="px-4 sm:px-6 py-2 sm:py-3 border border-indigo-600 text-indigo-400 rounded-lg hover:bg-indigo-900/20 transition-colors text-sm sm:text-base"
         >
           Contact Me
         </a>
