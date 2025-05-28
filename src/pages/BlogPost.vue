@@ -228,11 +228,77 @@ watchEffect(() => {
           property: 'article:tag',
           content: post.value.topics?.map((t) => t.topic).join(', ') || '',
         },
+        // Additional SEO
+        {
+          name: 'robots',
+          content: post.value?.seo?.noIndex ? 'noindex, nofollow' : 'index, follow',
+        },
+        {
+          name: 'keywords',
+          content: post.value?.topics?.map((t) => t.topic).join(', ') || '',
+        },
+        {
+          name: 'author',
+          content: post.value?.author?.map((a) => a.name).join(', ') || '',
+        },
+        {
+          name: 'date',
+          content: post.value?._firstPublishedAt,
+        },
+        {
+          name: 'revisit-after',
+          content: '7 days',
+        },
+        {
+          name: 'language',
+          content: 'English',
+        },
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1',
+        },
       ],
       link: [
         {
           rel: 'canonical',
           href: canonicalUrl.value,
+        },
+        {
+          rel: 'alternate',
+          type: 'application/rss+xml',
+          title: 'RSS Feed',
+          href: 'https://marianadamus.com/rss.xml',
+        },
+      ],
+      script: [
+        {
+          type: 'application/ld+json',
+          children: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            headline: seoTitle.value,
+            description: seoDescription.value,
+            image: seoImage.value,
+            datePublished: post.value?._firstPublishedAt,
+            dateModified: post.value?._firstPublishedAt,
+            author: post.value?.author?.map((a) => ({
+              '@type': 'Person',
+              name: a.name,
+            })),
+            publisher: {
+              '@type': 'Organization',
+              name: 'Marian Adamus Blog',
+              logo: {
+                '@type': 'ImageObject',
+                url: 'https://marianadamus.com/logo.png',
+              },
+            },
+            mainEntityOfPage: {
+              '@type': 'WebPage',
+              '@id': canonicalUrl.value,
+            },
+            keywords: post.value?.topics?.map((t) => t.topic).join(', ') || '',
+          }),
         },
       ],
     });
