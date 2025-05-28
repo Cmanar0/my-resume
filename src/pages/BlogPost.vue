@@ -1136,4 +1136,146 @@ onMounted(() => {
 .prose h6 + pre.shiki {
   @apply mt-8;
 }
+
+/* Content Block Base Styles */
+.prose .content-block {
+  @apply my-8 p-6 rounded-lg border-l-4 relative;
+}
+
+.prose .content-block::before {
+  @apply block font-semibold mb-2 text-lg;
+}
+
+.prose .content-block p {
+  @apply text-gray-300 mb-0;
+}
+
+.prose .content-block a {
+  @apply underline transition-colors;
+}
+
+/* Note Block Styling */
+.prose .note-block {
+  @apply border-blue-500 bg-blue-500/10;
+}
+
+.prose .note-block::before {
+  content: '💡 Note';
+  @apply text-blue-500;
+}
+
+.prose .note-block a {
+  @apply text-blue-500 hover:text-blue-400;
+}
+
+/* Important Block Styling */
+.prose .important-block {
+  @apply border-yellow-500 bg-yellow-500/10;
+}
+
+.prose .important-block::before {
+  content: '⚠️ Important';
+  @apply text-yellow-500;
+}
+
+.prose .important-block a {
+  @apply text-yellow-500 hover:text-yellow-400;
+}
+
+/* Warning Block Styling */
+.prose .warning-block {
+  @apply border-red-500 bg-red-500/10;
+}
+
+.prose .warning-block::before {
+  content: '🚨 Warning';
+  @apply text-red-500;
+}
+
+.prose .warning-block a {
+  @apply text-red-500 hover:text-red-400;
+}
+
+/* Info Block Styling */
+.prose .info-block {
+  @apply border-indigo-500 bg-indigo-500/10;
+}
+
+.prose .info-block::before {
+  content: 'ℹ️ Info';
+  @apply text-indigo-500;
+}
+
+.prose .info-block a {
+  @apply text-indigo-500 hover:text-indigo-400;
+}
+
+/* Success Block Styling */
+.prose .success-block {
+  @apply border-green-500 bg-green-500/10;
+}
+
+.prose .success-block::before {
+  content: '✅ Success';
+  @apply text-green-500;
+}
+
+.prose .success-block a {
+  @apply text-green-500 hover:text-green-400;
+}
+
+/* Code Block Inside Content Blocks */
+.prose .content-block pre {
+  @apply mt-4 mb-4 bg-gray-800/50;
+}
+
+.prose .content-block code {
+  @apply bg-gray-800/50;
+}
+
+/* Lists Inside Content Blocks */
+.prose .content-block ul {
+  @apply mt-4 mb-4;
+}
+
+.prose .content-block ul li {
+  @apply text-gray-300;
+}
+
+.prose .content-block ul li::before {
+  @apply text-current;
+}
+
+/* Headers Inside Content Blocks */
+.prose .content-block h1,
+.prose .content-block h2,
+.prose .content-block h3,
+.prose .content-block h4,
+.prose .content-block h5,
+.prose .content-block h6 {
+  @apply text-current mt-6 mb-4;
+}
+
+/* Tables Inside Content Blocks */
+.prose .content-block table {
+  @apply mt-4 mb-4 bg-gray-800/30;
+}
+
+.prose .content-block th {
+  @apply bg-gray-800/50;
+}
+
+.prose .content-block td {
+  @apply text-gray-300;
+}
+
+/* Blockquotes Inside Content Blocks */
+.prose .content-block blockquote {
+  @apply border-current mt-4 mb-4;
+}
+
+/* Images Inside Content Blocks */
+.prose .content-block img {
+  @apply mt-4 mb-4;
+}
 </style>
