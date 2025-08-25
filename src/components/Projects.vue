@@ -98,9 +98,9 @@ const projects = [
   },
   {
     title: 'Online Course Portal',
-    subtitle: 'ComGuide',
-    description: 'An interactive drag-and-drop table for managing and visualizing shifts for employees.',
-    image: '/table.png',
+    subtitle: 'ComGuide - In Progress',
+    description: 'A portal with variety of interactive courses to train healthcare professionals in conflict resolution.',
+    image: '/comguide.png',
     imageAlt: 'Online Course Portal project screenshot',
     icons: [
       {
