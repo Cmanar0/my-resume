@@ -337,12 +337,11 @@ watch(
       </div>
 
       <!-- Description -->
-      <div ref="descriptionRef" class="relative z-10 text-center px-4 sm:px-6 lg:px-20 max-w-4xl mx-auto py-32">
+      <div ref="descriptionRef" class="relative z-10 text-center px-3 sm:px-6 lg:px-15 max-w-5xl mx-auto py-32">
         <h3 class="text-3xl font-semibold text-center">
-          I'm documenting my journey from
-          <span class="bg-gradient-to-r from-[#007EF0] to-[#00DBD9] bg-clip-text text-transparent">Junior</span>
-          to
-          <span class="bg-gradient-to-r from-[#7B28C8] to-[#FD0182] bg-clip-text text-transparent">Senior</span>. 
+          Documenting what I 
+          <span class="bg-gradient-to-r from-[#007EF0] to-[#00DBD9] bg-clip-text text-transparent">learn</span>, hoping it makes someone's  
+          <span class="bg-gradient-to-r from-[#7B28C8] to-[#FD0182] bg-clip-text text-transparent">path</span> easier.
           <br>
           Let's become a
           <span class="bg-gradient-to-r from-[#FF4F4D] to-[#FAC42B] bg-clip-text text-transparent">Full Stack Developer</span>
