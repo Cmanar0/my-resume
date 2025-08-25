@@ -4,11 +4,11 @@ import HorizontalProject from './projects/HorizontalProject.vue';
 // Project data
 const projects = [
   {
-    title: 'Business Viability Evaluator',
-    subtitle: 'Personal Project',
+    title: 'Employee Shift Management',
+    subtitle: 'Stafio',
     description: 'An interactive drag-and-drop table for managing and visualizing shifts for employees.',
     image: '/table.png',
-    imageAlt: 'Business Viability Evaluator project screenshot',
+    imageAlt: 'Employee Shift Management project screenshot',
     icons: [
       {
         src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
@@ -32,13 +32,44 @@ const projects = [
       }
     ],
     previewUrl: 'https://demo.com',
-    githubUrl: 'https://github.com'
+    isPrivate: true
   },
   {
-    title: 'Sports Analysis Chat Interface',
+    title: 'Prague Shenanigans',
+    subtitle: 'Personal Project - In Progress',
+    description: 'A web app built with Quasar (for future mobile version) and Vue.js that helps users discover unique places in Prague in different ways. Future features - creation of itineraries, location-dependent content, and more.',
+    image: '/shenanigans.png',
+    imageAlt: 'Prague Shenanigans project screenshot',
+    icons: [
+      {
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+        alt: 'JavaScript logo'
+      },
+      {
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg',
+        alt: 'Vue.js logo'
+      },
+      {
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg',
+        alt: 'Nuxt.js logo'
+      },
+      {
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg',
+        alt: 'Vite logo'
+      },
+      {
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sentry/sentry-original.svg',
+        alt: 'Sentry logo'
+      }
+    ],
+    previewUrl: 'https://shenanigans.cz/',
+    isPrivate: true
+  },
+  {
+    title: 'AI Chat Interface',
     subtitle: 'ChatSST',
-    description: 'An interactive drag-and-drop table for managing and visualizing shifts for employees.',
-    image: '/table.png',
+    description: 'AI-powered sports analysis assistant for SSTrader, featuring chat history and the ability to choose different AI models; handling data streams for smooth user experience. ',
+    image: '/SST.png',
     imageAlt: 'Sports Analysis Chat Interface project screenshot',
     icons: [
       {
@@ -95,68 +126,6 @@ const projects = [
     ],
     previewUrl: 'https://demo.com'
   },
-  {
-    title: 'Employee Shift Management',
-    subtitle: 'Stafio',
-    description: 'An interactive drag-and-drop table for managing and visualizing shifts for employees.',
-    image: '/table.png',
-    imageAlt: 'Employee Shift Management project screenshot',
-    icons: [
-      {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
-        alt: 'JavaScript logo'
-      },
-      {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg',
-        alt: 'Vue.js logo'
-      },
-      {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg',
-        alt: 'Nuxt.js logo'
-      },
-      {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg',
-        alt: 'Vite logo'
-      },
-      {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sentry/sentry-original.svg',
-        alt: 'Sentry logo'
-      }
-    ],
-    previewUrl: 'https://demo.com',
-    isPrivate: true
-  },
-  {
-    title: 'Prague Shenenigans',
-    subtitle: 'Personal Project',
-    description: 'An interactive drag-and-drop table for managing and visualizing shifts for employees.',
-    image: '/table.png',
-    imageAlt: 'Prague Shenenigans project screenshot',
-    icons: [
-      {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
-        alt: 'JavaScript logo'
-      },
-      {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg',
-        alt: 'Vue.js logo'
-      },
-      {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg',
-        alt: 'Nuxt.js logo'
-      },
-      {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg',
-        alt: 'Vite logo'
-      },
-      {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sentry/sentry-original.svg',
-        alt: 'Sentry logo'
-      }
-    ],
-    previewUrl: 'https://demo.com',
-    isPrivate: true
-  }
 ];
 </script>
 
