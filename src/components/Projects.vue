@@ -124,7 +124,8 @@ const projects = [
         alt: 'Sentry logo'
       }
     ],
-    previewUrl: 'https://demo.com'
+    previewUrl: 'https://demo.com',
+    isPrivate: true
   },
 ];
 </script>
