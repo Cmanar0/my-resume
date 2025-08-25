@@ -93,7 +93,7 @@ const projects = [
         alt: 'Sentry logo'
       }
     ],
-    previewUrl: 'https://demo.com',
+    previewUrl: 'https://chat.sstrader.com/',
     isPrivate: true
   },
   {
@@ -124,7 +124,7 @@ const projects = [
         alt: 'Sentry logo'
       }
     ],
-    previewUrl: 'https://demo.com',
+    previewUrl: 'https://portal.comguide.cz/auth/login/?lang=en',
     isPrivate: true
   },
 ];
