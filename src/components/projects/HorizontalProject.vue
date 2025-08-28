@@ -8,6 +8,10 @@ defineProps({
     type: String,
     required: true
   },
+  type: {
+    type: String,
+    default: ''
+  },
   description: {
     type: String,
     required: true
@@ -49,7 +53,7 @@ defineProps({
         {{ title }}
       </h3>
       <p class="text-lg text-indigo-600 dark:text-indigo-400 !mt-[3px]">
-        {{ subtitle }}
+        {{ subtitle }}<span v-if="type" class="text-white"> • {{ type }}</span>
       </p>
 
       <div class="flex items-center flex-wrap gap-4" aria-label="Technologies used">

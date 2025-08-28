@@ -6,6 +6,7 @@ const projects = [
   {
     title: 'Employee Shift Management',
     subtitle: 'Stafio',
+    type: 'Frontend',
     description: 'An interactive drag-and-drop table for managing and visualizing shifts for employees.',
     image: '/table.png',
     imageAlt: 'Employee Shift Management project screenshot',
@@ -36,7 +37,8 @@ const projects = [
   },
   {
     title: 'Prague Shenanigans',
-    subtitle: 'Personal Project - In Progress',
+    subtitle: 'Personal Project',
+    type: 'Fullstack',
     description: 'Discover unique places in Prague in the ways that interest you. Upcoming features include itinerary creation, location-based content, and more.',
     image: '/shenanigans.png',
     imageAlt: 'Prague Shenanigans project screenshot',
@@ -83,6 +85,7 @@ const projects = [
   {
     title: 'AI Chat Interface',
     subtitle: 'ChatSST',
+    type: 'Frontend',
     description: 'AI-powered sports analysis assistant for SSTrader, featuring chat history and the ability to choose different AI models; handling data streams for smooth user experience. ',
     image: '/SST.png',
     imageAlt: 'Sports Analysis Chat Interface project screenshot',
@@ -112,7 +115,8 @@ const projects = [
   },
   {
     title: 'Online Course Portal',
-    subtitle: 'ComGuide - In Progress',
+    subtitle: 'ComGuide',
+    type: 'Fullstack',
     description: 'A portal with variety of interactive courses to train healthcare professionals in conflict resolution.',
     image: '/comguide.png',
     imageAlt: 'Online Course Portal project screenshot',
@@ -173,6 +177,7 @@ const projects = [
       :key="index"
       :title="project.title"
       :subtitle="project.subtitle"
+      :type="project.type"
       :description="project.description"
       :image="project.image"
       :image-alt="project.imageAlt"
