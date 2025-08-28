@@ -4,34 +4,42 @@ import HorizontalProject from './projects/HorizontalProject.vue';
 // Project data
 const projects = [
   {
-    title: 'Employee Shift Management',
+    title: 'Employee Shift Dashboard',
     subtitle: 'Stafio',
     type: 'Frontend',
-    description: 'An interactive drag-and-drop table for managing and visualizing shifts for employees.',
+    description: 'An interactive drag-and-drop table for managing and visualizing shifts for employees. Create shift tempaltes. Filter by date, employee, shift and more.',
     image: '/table.png',
     imageAlt: 'Employee Shift Management project screenshot',
-    icons: [
-      {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
-        alt: 'JavaScript logo'
-      },
-      {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg',
-        alt: 'Vue.js logo'
-      },
-      {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg',
-        alt: 'Nuxt.js logo'
-      },
-      {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg',
-        alt: 'Vite logo'
-      },
-      {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sentry/sentry-original.svg',
-        alt: 'Sentry logo'
-      }
-    ],
+                icons: [
+              {
+                src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+                alt: 'JavaScript logo'
+              },
+              {
+                src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg',
+                alt: 'Vue.js logo'
+              },
+              {
+                src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg',
+                alt: 'Nuxt.js logo'
+              },
+              {
+                src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg',
+                alt: 'Vite logo'
+              },
+              {
+                src: '/devexpress.png',
+                alt: 'DevExpress logo'
+              },
+              {
+                src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg',
+                alt: 'Vuex logo'
+              },
+              {
+                src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sentry/sentry-original.svg',
+                alt: 'Sentry logo'
+              }
+            ],
     btn1: {
       text: 'WebApp',
       url: 'https://www.stafio.cz/'

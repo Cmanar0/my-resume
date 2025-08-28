@@ -111,7 +111,7 @@ onMounted(() => {
                 </div>
                 <div class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-gray-600 dark:text-gray-300 leading-relaxed text-lg items-start">
                   <span class="text-indigo-600 dark:text-indigo-400 mt-1">•</span>
-                  <span class="text-left">Helping you bring your project to life—whether it's just an idea or already fully designed.</span>
+                  <span class="text-left">Help you bring your project to life—whether it's just an idea or already fully designed.</span>
                   <span class="text-indigo-600 dark:text-indigo-400 mt-1">•</span>
                   <span class="text-left">Ready to collaborate and integrate seamlessly into your development team.</span>
                 </div>
