@@ -8,14 +8,14 @@ const experiences = [
     role: 'Full Stack Developer',
     period: '2024 - 2025',
     description:
-      'Worked on a variety of freelance projects including Newton (team leave management web app), ChatSST (AI-powered sports analysis chat interface), SSTrader Blog (SEO-optimized blog with DatoCMS), and ComGuide (WebGL-powered online course for healthcare professionals). Delivered fullstack solutions with modern frontend and backend technologies.',
+      'Worked on a variety of freelance projects: Newton – a team leave management web app; ChatSST – an AI-powered sports analysis chat interface; SSTrader Blog – a SEO-optimized blog built with DatoCMS; and ComGuide – an online course platform for healthcare professionals, including its dedicated online portal.',
   },
   {
     company: 'Stafio',
     role: 'Full Stack Developer',
     period: '2022 - 2024',
     description:
-      'Developed key features for a job recruitment platform, an electronic document signing system for O2 Arena (Ice Hockey World Championship), and advanced tools like a drag & drop scheduling board and a Kanban planning dashboard using DevExtreme UI. Built custom UI components and improved complex data handling.',
+      'Developed key features for a job recruitment platform. Built an electronic document signing system for the O2 Arena (Ice Hockey World Championship). Created advanced tools such as a drag-and-drop scheduling board and a Kanban planning dashboard.',
   },
   {
     company: 'Stafio',
