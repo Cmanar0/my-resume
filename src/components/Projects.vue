@@ -32,7 +32,10 @@ const projects = [
         alt: 'Sentry logo'
       }
     ],
-    previewUrl: 'https://demo.com',
+    btn1: {
+      text: 'WebApp',
+      url: 'https://www.stafio.cz/'
+    },
     isPrivate: true
   },
   {
@@ -79,8 +82,15 @@ const projects = [
         alt: 'SCSS logo'
       }
     ],
-    previewUrl: 'https://shenanigans.cz/',
-    isPrivate: true
+                btn1: {
+              text: 'Website',
+              url: 'https://shenanigans.cz/#/mission'
+            },
+            btn2: {
+              text: 'Map',
+              url: 'https://shenanigans.cz'
+            },
+            isPrivate: true
   },
   {
     title: 'AI Chat Interface',
@@ -110,7 +120,14 @@ const projects = [
         alt: 'SCSS logo'
       }
     ],
-    previewUrl: 'https://chat.sstrader.com/',
+    btn1: {
+      text: 'Try Chat',
+      url: 'https://chat.sstrader.com/'
+    },
+    btn2: {
+      text: 'Blog',
+      url: 'https://sstrader.com/'
+    },
     isPrivate: true
   },
   {
@@ -154,7 +171,14 @@ const projects = [
         alt: 'Docker logo'
       }
     ],
-    previewUrl: 'https://portal.comguide.cz/auth/login/?lang=en',
+    btn1: {
+      text: 'Portal',
+      url: 'https://portal.comguide.cz/auth/login/?lang=en'
+    },
+    btn2: {
+      text: 'Course',
+      url: 'https://kurz.comguide.cz/slide/100'
+    },
     isPrivate: true
   },
 ];
@@ -182,7 +206,8 @@ const projects = [
       :image="project.image"
       :image-alt="project.imageAlt"
       :icons="project.icons"
-      :preview-url="project.previewUrl"
+      :btn1="project.btn1"
+      :btn2="project.btn2"
       :github-url="project.githubUrl"
       :is-private="project.isPrivate"
     />
