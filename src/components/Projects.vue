@@ -37,29 +37,44 @@ const projects = [
   {
     title: 'Prague Shenanigans',
     subtitle: 'Personal Project - In Progress',
-    description: 'A web app built with Quasar (for future mobile version) and Vue.js that helps users discover unique places in Prague in different ways. Future features - creation of itineraries, location-dependent content, and more.',
+    description: 'Discover unique places in Prague in the ways that interest you. Upcoming features include itinerary creation, location-based content, and more.',
     image: '/shenanigans.png',
     imageAlt: 'Prague Shenanigans project screenshot',
     icons: [
       {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
-        alt: 'JavaScript logo'
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg',
+        alt: 'Django logo'
+      },
+      {
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+        alt: 'Python logo'
+      },
+      {
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
+        alt: 'Docker logo'
+      },
+      {
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
+        alt: 'PostgreSQL logo'
+      },
+      { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg',
+        alt: 'Vite logo'
       },
       {
         src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg',
         alt: 'Vue.js logo'
       },
       {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg',
-        alt: 'Nuxt.js logo'
+        src: 'https://cdn.quasar.dev/logo-v2/svg/logo.svg',
+        alt: 'Quasar logo'
       },
       {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg',
-        alt: 'Vite logo'
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+        alt: 'TypeScript logo'
       },
       {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sentry/sentry-original.svg',
-        alt: 'Sentry logo'
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg',
+        alt: 'SCSS logo'
       }
     ],
     previewUrl: 'https://shenanigans.cz/',
@@ -72,25 +87,24 @@ const projects = [
     image: '/SST.png',
     imageAlt: 'Sports Analysis Chat Interface project screenshot',
     icons: [
+              {
+          src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg',
+          alt: 'Vue.js logo'
+        },
+        {
+          src: '/pinia.png',
+          alt: 'Pinia logo'
+        },
+        { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg',
+          alt: 'Vite logo'
+        },
       {
         src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
         alt: 'JavaScript logo'
       },
       {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg',
-        alt: 'Vue.js logo'
-      },
-      {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg',
-        alt: 'Nuxt.js logo'
-      },
-      {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg',
-        alt: 'Vite logo'
-      },
-      {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sentry/sentry-original.svg',
-        alt: 'Sentry logo'
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg',
+        alt: 'SCSS logo'
       }
     ],
     previewUrl: 'https://chat.sstrader.com/',
@@ -104,24 +118,36 @@ const projects = [
     imageAlt: 'Online Course Portal project screenshot',
     icons: [
       {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
-        alt: 'JavaScript logo'
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg',
+        alt: 'Django logo'
       },
       {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg',
-        alt: 'Vue.js logo'
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+        alt: 'Python logo'
       },
       {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg',
-        alt: 'Nuxt.js logo'
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
+        alt: 'PostgreSQL logo'
       },
       {
         src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg',
         alt: 'Vite logo'
       },
       {
-        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sentry/sentry-original.svg',
-        alt: 'Sentry logo'
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg',
+        alt: 'Vue.js logo'
+      },
+      {
+        src: '/pinia.png',
+        alt: 'Pinia logo'
+      },
+      {
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+        alt: 'JavaScript logo'
+      },
+      {
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
+        alt: 'Docker logo'
       }
     ],
     previewUrl: 'https://portal.comguide.cz/auth/login/?lang=en',
@@ -160,7 +186,7 @@ const projects = [
 
 <style scoped>
 .card-size {
-  max-height: 420px;
+  max-height: 560px;
   }
 
   @media (max-width: 1148px) {

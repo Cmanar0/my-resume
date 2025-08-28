@@ -52,7 +52,7 @@ defineProps({
         {{ subtitle }}
       </p>
 
-      <div class="flex items-center gap-4" aria-label="Technologies used">
+      <div class="flex items-center flex-wrap gap-4" aria-label="Technologies used">
         <div
           v-for="icon in icons"
           :key="icon.alt"
@@ -131,7 +131,6 @@ defineProps({
 </template>
 
 <style scoped>
-
 /* Custom breakpoint at 1150px */
 @media (min-width: 1148px) {
   .project-card {
@@ -139,13 +138,24 @@ defineProps({
   }
   
   .project-card header {
-    width: 33%;
+    width: 450px;
     padding-right: 10px;
   }
   
   .desktop-image {
     display: flex;
-    width: 65%;
+    width: 100%;
+    top: 70px !important;
+    left: 100px !important;
+    height: 100%;
+
+  }
+
+    .desktop-image img {
+    display: flex;
+    min-height: 380px;
+    height: 100%;
+    object-fit: cover;
   }
   
   .mobile-image {
